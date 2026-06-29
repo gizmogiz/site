@@ -19,10 +19,9 @@
      HOW TO EDIT THIS SITE
      - Everything is in this one file. No build step, no framework.
      - To change text: find it below and type over it.
-     - To go live (free): drag this file onto https://app.netlify.com/drop
      - The interactive map only renders when the page is served from a
        host (Netlify, Vercel) — not when you double-click the file.
-     - Search for the word  EDIT:  to find every spot you should update.
+     - Search for the word  EDIT:  to find spots you may want to update.
      ================================================================ -->
 
 <style>
@@ -114,24 +113,29 @@
   .row{display:flex; justify-content:space-between; gap:16px; align-items:baseline}
   .row .meta{color:var(--muted); white-space:nowrap; font-size:13px}
   .blurb{color:var(--muted); margin:4px 0 0; font-size:13.5px}
-  .booklist .by{color:var(--muted); font-style:italic; font-size:13px; white-space:nowrap}
   .catlabel{font-family:var(--display); font-size:12px; text-transform:uppercase; letter-spacing:.18em; color:var(--accent2); margin:24px 0 8px}
   ul.bullets{margin:0 0 14px; padding-left:1.2em}
   ul.bullets li{margin:5px 0}
   ul.bullets li::marker{color:var(--accent2)}
-  .keyblock{margin:10px 0 0}
-  .keyblock .k{font-weight:600}
 
-  /* date me */
-  .dm dt{font-weight:600; margin-top:16px}
-  .dm dd{margin:4px 0 0; color:var(--muted)}
+  /* collapsible (dropdown) sections */
+  details.fold{margin:34px 0 0}
+  details.fold > summary{
+    list-style:none; cursor:pointer;
+    font-family:var(--display); font-size:22px; font-weight:500; color:var(--fg);
+    display:flex; align-items:center; gap:12px; scroll-margin-top:24px;
+  }
+  details.fold > summary::-webkit-details-marker{display:none}
+  details.fold > summary::after{content:"+"; margin-left:auto; color:var(--accent2); font-weight:400}
+  details.fold[open] > summary::after{content:"\2013"}
+  details.fold[open] > summary{margin-bottom:14px}
 
   footer{padding-top:36px; border-top:1px solid var(--rule); color:var(--muted); font-size:13px}
 
   /* ---------- atlas / map ---------- */
   #atlas-map{height:420px; width:100%; border:1px solid var(--rule); border-radius:6px; overflow:hidden; background:var(--rule); margin:6px 0 10px}
   /* tint the dark map tiles toward the plum palette so the map matches the site.
-     nudge the hue-rotate value (more purple ↑, more blue ↓) to taste. */
+     nudge the hue-rotate value (more purple up, more blue down) to taste. */
   .leaflet-tile-pane{ filter:sepia(.5) hue-rotate(238deg) saturate(.8) brightness(.9) contrast(1.05); }
   .leaflet-container{font:14px var(--serif); background:var(--bg)}
   .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--bg); color:var(--fg); box-shadow:0 1px 6px rgba(0,0,0,.25)}
@@ -146,7 +150,7 @@
   .leaflet-control-layers label{display:block; margin:3px 0}
   .leaflet-bar a{background:var(--bg); color:var(--fg); border-bottom:1px solid var(--rule)}
 
-  /* open questions — mauve feature panel */
+  /* alternate defaults — mauve feature panel */
   .questions{
     background:var(--panel);
     background:color-mix(in srgb, var(--accent2) 16%, var(--bg));
@@ -174,8 +178,8 @@
       <a class="grp" href="#atlas">Atlas</a>
       <a class="grp" href="#projects">Projects</a>
       <a class="grp" href="#thoughts">Thoughts</a>
-      <a class="sub" href="#writing">Writing</a>
       <a class="sub" href="#defaults">Alternate Defaults</a>
+      <a class="sub" href="#writing">Writing</a>
       <a class="grp" href="#love">Love</a>
       <a class="sub" href="#date">A JD for My Future Partner(s)</a>
     </nav>
@@ -191,12 +195,10 @@
   <!-- ===================== CONTENT ===================== -->
   <main class="content">
 
-    <!-- ATLAS (first thing visible on the right) -->
+    <!-- ATLAS -->
     <section id="atlas">
       <h2>Atlas</h2>
-
       <div id="atlas-map"></div>
-
       <p class="muted" style="font-size:12.5px">
         <span style="color:#C76B6B">●</span> climbing &nbsp;
         <span style="color:#9A7FB0">●</span> travel
@@ -218,81 +220,9 @@
       </ul>
     </section>
 
-    <!-- THOUGHTS = writing + questions -->
+    <!-- THOUGHTS -->
     <section id="thoughts">
       <h2>Thoughts</h2>
-
-      <h3 id="writing">Writing</h3>
-
-      <p class="catlabel">Stablecoins &amp; the industry</p>
-      <ul class="list">
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/2029336058064707858">Vaults are ETFs on Steroids</a><span class="meta">Mar 2026</span></div>
-          <p class="blurb">From a 1774 Dutch fund to on-chain vaults — why programmable vaults are the ETF of the blockchain era.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1979318917341298987">Solana is Paying $500M a Year to Fund Its Competitors</a><span class="meta">Oct 2025</span></div>
-          <p class="blurb">How idle stablecoin reserves quietly subsidize rival ecosystems — and what Solana must do about it.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1950255338155843845">SOL needs more than DAT</a><span class="meta">Jul 2025</span></div>
-          <p class="blurb">Why treasury vehicles aren't enough — the case for a $1B+ Solana-native ecosystem company to win the capital war.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1927849497457009143">Stablecoins Are for Financial Inclusion</a><span class="meta">May 2025</span></div>
-          <p class="blurb">A rebuttal to the FT and WSJ: stablecoins as a tool for financial inclusion — and why that's good business too.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1907078354227855417">Stablecoins Might Break Money</a><span class="meta">Apr 2025</span></div>
-          <p class="blurb">What the GENIUS and STABLE Acts really mean, and how 100%-reserve stablecoins could reshape monetary policy.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1890148958695039087">The End of Financial Feudalism</a><span class="meta">Feb 2025</span></div>
-          <p class="blurb">Money as power — and how stablecoins challenge the centuries-old monopoly on creating it.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1856390428654018887">A Manifesto: Money Reimagined</a><span class="meta">Nov 2024</span></div>
-          <p class="blurb">The founding thesis — money as humanity's coordination technology, and the missing infrastructure layer.</p>
-        </li>
-      </ul>
-
-      <p class="catlabel">Building Perena</p>
-      <ul class="list">
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/2023446336616505637">We Almost Didn't Launch a Token</a><span class="meta">Feb 2026</span></div>
-          <p class="blurb">The honest case for and against a token, and the loyalty-not-governance model we chose.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/2019868945067438338">Slow Down, Perena</a><span class="meta">Feb 2026</span></div>
-          <p class="blurb">Why I'm deliberately slowing the company down, and the 2026 roadmap for USD*.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1928097974657126615">Accelerating Perena — Part II</a><span class="meta">May 2025</span></div>
-          <p class="blurb">The principles behind Perena: a public-good stablecoin list, risk transparency, and building for the underserved.</p>
-        </li>
-        <li>
-          <div class="row"><a href="https://x.com/gizmothegizzer/status/1924593810832515194">Accelerating Perena — Part I</a><span class="meta">May 2025</span></div>
-          <p class="blurb">The StableBank vision — composable currencies, the liquidity layer, and where Perena is headed.</p>
-        </li>
-      </ul>
-
-      <p class="catlabel">Ideas &amp; life</p>
-      <ul class="list">
-        <li>
-          <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1873955715737673963">科技时代，人文从未缺席</a><span class="meta">Dec 2024</span></div>
-          <p class="blurb cjk">芝大哲学本科、近 70 国游历，反思人文与艺术在科技时代为何不可或缺。</p>
-        </li>
-        <li>
-          <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1817421952547508647">【教育】我当了一年的寄宿妈妈</a><span class="meta">Jul 2024</span></div>
-          <p class="blurb cjk">当了一年寄宿家庭妈妈，从两位交换生与芝加哥公校，看教育与阶层。</p>
-        </li>
-        <li>
-          <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1803285876828495903">【冻卵】经验分享</a><span class="meta">Jun 2024</span></div>
-          <p class="blurb cjk">冻卵全过程的真实经验、时间安排与注意事项分享。</p>
-        </li>
-      </ul>
-
-      <p class="muted" style="margin-top:18px">More on my <a href="https://x.com/gizmothegizzer/articles">X articles</a>.</p>
 
       <h3 id="defaults">Alternate Defaults</h3>
       <p class="muted" style="margin:0 0 16px">The defaults I'd like to rewrite.</p>
@@ -308,58 +238,140 @@
           <li>Every woman owns a great vibrator.</li>
         </ol>
       </div>
+
+      <!-- Writing (collapsible) -->
+      <details class="fold" id="writing">
+        <summary>Writing</summary>
+        <div class="fold-body">
+          <p class="catlabel">Stablecoins &amp; the industry</p>
+          <ul class="list">
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/2029336058064707858">Vaults are ETFs on Steroids</a><span class="meta">Mar 2026</span></div>
+              <p class="blurb">From a 1774 Dutch fund to on-chain vaults — why programmable vaults are the ETF of the blockchain era.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1979318917341298987">Solana is Paying $500M a Year to Fund Its Competitors</a><span class="meta">Oct 2025</span></div>
+              <p class="blurb">How idle stablecoin reserves quietly subsidize rival ecosystems — and what Solana must do about it.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1950255338155843845">SOL needs more than DAT</a><span class="meta">Jul 2025</span></div>
+              <p class="blurb">Why treasury vehicles aren't enough — the case for a $1B+ Solana-native ecosystem company to win the capital war.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1927849497457009143">Stablecoins Are for Financial Inclusion</a><span class="meta">May 2025</span></div>
+              <p class="blurb">A rebuttal to the FT and WSJ: stablecoins as a tool for financial inclusion — and why that's good business too.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1907078354227855417">Stablecoins Might Break Money</a><span class="meta">Apr 2025</span></div>
+              <p class="blurb">What the GENIUS and STABLE Acts really mean, and how 100%-reserve stablecoins could reshape monetary policy.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1890148958695039087">The End of Financial Feudalism</a><span class="meta">Feb 2025</span></div>
+              <p class="blurb">Money as power — and how stablecoins challenge the centuries-old monopoly on creating it.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1856390428654018887">A Manifesto: Money Reimagined</a><span class="meta">Nov 2024</span></div>
+              <p class="blurb">The founding thesis — money as humanity's coordination technology, and the missing infrastructure layer.</p>
+            </li>
+          </ul>
+
+          <p class="catlabel">Building Perena</p>
+          <ul class="list">
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/2023446336616505637">We Almost Didn't Launch a Token</a><span class="meta">Feb 2026</span></div>
+              <p class="blurb">The honest case for and against a token, and the loyalty-not-governance model we chose.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/2019868945067438338">Slow Down, Perena</a><span class="meta">Feb 2026</span></div>
+              <p class="blurb">Why I'm deliberately slowing the company down, and the 2026 roadmap for USD*.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1928097974657126615">Accelerating Perena — Part II</a><span class="meta">May 2025</span></div>
+              <p class="blurb">The principles behind Perena: a public-good stablecoin list, risk transparency, and building for the underserved.</p>
+            </li>
+            <li>
+              <div class="row"><a href="https://x.com/gizmothegizzer/status/1924593810832515194">Accelerating Perena — Part I</a><span class="meta">May 2025</span></div>
+              <p class="blurb">The StableBank vision — composable currencies, the liquidity layer, and where Perena is headed.</p>
+            </li>
+          </ul>
+
+          <p class="catlabel">Ideas &amp; life</p>
+          <ul class="list">
+            <li>
+              <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1873955715737673963">科技时代，人文从未缺席</a><span class="meta">Dec 2024</span></div>
+              <p class="blurb cjk">芝大哲学本科、近 70 国游历，反思人文与艺术在科技时代为何不可或缺。</p>
+            </li>
+            <li>
+              <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1817421952547508647">【教育】我当了一年的寄宿妈妈</a><span class="meta">Jul 2024</span></div>
+              <p class="blurb cjk">当了一年寄宿家庭妈妈，从两位交换生与芝加哥公校，看教育与阶层。</p>
+            </li>
+            <li>
+              <div class="row"><a class="cjk" href="https://x.com/gizmothegizzer/status/1803285876828495903">【冻卵】经验分享</a><span class="meta">Jun 2024</span></div>
+              <p class="blurb cjk">冻卵全过程的真实经验、时间安排与注意事项分享。</p>
+            </li>
+          </ul>
+
+          <p class="muted" style="margin-top:18px">More on my <a href="https://x.com/gizmothegizzer/articles">X articles</a>.</p>
+        </div>
+      </details>
     </section>
 
-    <!-- LOVE = date me -->
+    <!-- LOVE -->
     <section id="love">
       <h2>Love</h2>
-      <h3 id="date">A JD for My Future Partner(s)</h3>
-      <p class="lead">An earnest job description for a serious relationship.</p>
 
-      <p class="catlabel">Huge green flags</p>
-      <p>I admire people who build things. I love people who have conviction, think independently, and are obsessed with mastering their craft.</p>
-      <p>That might mean founders, designers, artists, traders, researchers, climbers—or anyone who's become extraordinary at something through years of obsession.</p>
-      <p>You don't have to share my career. You should probably share my curiosity.</p>
+      <!-- JD (collapsible) -->
+      <details class="fold" id="date">
+        <summary>A JD for My Future Partner(s)</summary>
+        <div class="fold-body">
+          <p class="lead">An earnest job description for a serious relationship.</p>
 
-      <p class="catlabel">Lifestyle compatibility</p>
-      <p>My ideal vacation is…</p>
-      <ul class="bullets">
-        <li>sitting in front of rocks all day (climbing)</li>
-        <li>activity based: skiing, hiking, skydiving, etc.</li>
-        <li>exploring a new culture</li>
-      </ul>
-      <p>You don't need to climb V10. But if your dream vacation is a week at an all-inclusive beach resort, we're probably optimizing for different things.</p>
-      <p>Multicultural and multilingual is a huge plus. I'd love a life that spans more than one country.</p>
+          <p class="catlabel">Huge green flags</p>
+          <p>I admire people who build things. I love people who have conviction, think independently, and are obsessed with mastering their craft.</p>
+          <p>That might mean founders, designers, artists, traders, researchers, climbers—or anyone who's become extraordinary at something through years of obsession.</p>
+          <p>You don't have to share my career. You should probably share my curiosity.</p>
 
-      <p class="catlabel">We'd probably get along if…</p>
-      <ul class="bullets">
-        <li>Kind.</li>
-        <li>Honest, especially when it's uncomfortable.</li>
-        <li>Curious about a lot of things.</li>
-        <li>Physically active.</li>
-        <li>Wants children (likely through surrogacy).</li>
-        <li>Not actively religious.</li>
-      </ul>
+          <p class="catlabel">Lifestyle compatibility</p>
+          <p>My ideal vacation is…</p>
+          <ul class="bullets">
+            <li>sitting in front of rocks all day (climbing)</li>
+            <li>activity based: skiing, hiking, skydiving, etc.</li>
+            <li>exploring a new culture</li>
+          </ul>
+          <p>You don't need to climb V10. But if your dream vacation is a week at an all-inclusive beach resort, we're probably optimizing for different things.</p>
+          <p>Multicultural and multilingual is a huge plus. I'd love a life that spans more than one country.</p>
 
-      <p class="catlabel">Great to have</p>
-      <ul class="bullets">
-        <li>Deeply passionate about your craft.</li>
-        <li>Interested in investing, business, technology, or building things.</li>
-        <li>Climbs. (Mega bonus points if you climb harder than I do.)</li>
-      </ul>
+          <p class="catlabel">We'd probably get along if…</p>
+          <ul class="bullets">
+            <li>Kind.</li>
+            <li>Honest, especially when it's uncomfortable.</li>
+            <li>Curious about a lot of things.</li>
+            <li>Physically active.</li>
+            <li>Wants children (likely through surrogacy).</li>
+            <li>Not actively religious.</li>
+          </ul>
 
-      <p class="catlabel">Relationship philosophy</p>
-      <p>I value relationships built on trust, admiration, and choosing each other repeatedly.</p>
-      <p>I form and maintain deep, long-term friendships with people of all genders. I hope you do too.</p>
-      <p>I'm naturally polyamorous, but I care more about building an extraordinary family than about following any particular relationship model. If we choose monogamy, I'd want it to be because we're intentionally building that life together—not because it's simply the default.</p>
+          <p class="catlabel">Great to have</p>
+          <ul class="bullets">
+            <li>Deeply passionate about your craft.</li>
+            <li>Interested in investing, business, technology, or building things.</li>
+            <li>Climbs. (Mega bonus points if you climb harder than I do.)</li>
+          </ul>
 
-      <p class="catlabel">We'll probably frustrate each other if…</p>
-      <ul class="bullets">
-        <li>You need to be the center of my social world.</li>
-        <li>Curiosity isn't part of your identity.</li>
-        <li>You'd rather stay comfortable than keep growing.</li>
-        <li>You see trust as something to be earned through restriction rather than openness.</li>
-      </ul>
+          <p class="catlabel">Relationship philosophy</p>
+          <p>I value relationships built on trust, admiration, and choosing each other repeatedly.</p>
+          <p>I form and maintain deep, long-term friendships with people of all genders. I hope you do too.</p>
+          <p>I'm naturally polyamorous, but I care more about building an extraordinary family than about following any particular relationship model. If we choose monogamy, I'd want it to be because we're intentionally building that life together—not because it's simply the default.</p>
+
+          <p class="catlabel">We'll probably frustrate each other if…</p>
+          <ul class="bullets">
+            <li>You need to be the center of my social world.</li>
+            <li>Curiosity isn't part of your identity.</li>
+            <li>You'd rather stay comfortable than keep growing.</li>
+            <li>You see trust as something to be earned through restriction rather than openness.</li>
+          </ul>
+        </div>
+      </details>
     </section>
 
     <footer>
@@ -381,8 +393,6 @@
    ---------------------------------------------------------------- */
 
 // ---- LIST 1: CLIMBING ----
-// Names you remembered are exact; where you weren't sure I used the area
-// (rename anytime). Add grade / favorites / guide / xhs / photo per pin.
 const CLIMBING = [
   // East Coast / New England
   { name:"Virginia",          lat:36.620, lng:-81.500, sub:"USA · crag?" },        // EDIT: which crag?
@@ -521,10 +531,25 @@ L.control.layers(null, {
   "&#9679; Travel":   travelLayer
 }, { collapsed:false, position:"topright" }).addTo(map);
 
-// open all external links in a new tab (internal #anchors stay in-page)
+// open external links in a new tab (internal #anchors stay in-page)
 document.querySelectorAll('a[href^="http"]').forEach(function(a){
   a.target = "_blank";
   a.rel = "noopener";
+});
+
+// open a collapsible section when it's linked to (from the sidebar or a direct URL)
+function openTarget(){
+  if(!location.hash) return;
+  const el = document.querySelector(location.hash);
+  if(el && el.tagName === "DETAILS") el.open = true;
+}
+window.addEventListener("hashchange", openTarget);
+openTarget();
+document.querySelectorAll('.side a[href^="#"]').forEach(function(a){
+  a.addEventListener("click", function(){
+    const t = document.querySelector(a.getAttribute("href"));
+    if(t && t.tagName === "DETAILS") t.open = true;
+  });
 });
 </script>
 </body>
