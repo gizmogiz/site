@@ -18,42 +18,22 @@
 <!-- ================================================================
      HOW TO EDIT THIS SITE
      - Everything is in this one file. No build step, no framework.
-     - To change text: find it below and type over it.
-     - The interactive map only renders when the page is served from a
-       host (Netlify, Vercel) — not when you double-click the file.
      - The Tools card links to the /founders-schema/ subfolder (a separate
        built app) — upload that folder to the repo alongside this file.
      ================================================================ -->
 
 <style>
   :root{
-    /* Cliff Bloom lookbook palette — deep aubergine */
-    --bg:#3E3142;          /* deep dusty plum */
-    --panel:#473A4B;       /* lighter plum card */
-    --fg:#F2ECE3;          /* Ivory */
-    --muted:#C6B8CB;       /* muted mauve (lifted for readability) */
-    --rule:#5A4D5C;        /* hairline */
-    --link:#F2ECE3;
-    --accent:#C76B6B;      /* Rust, lifted for plum ground */
-    --accent2:#9A7FB0;     /* Mauve (travel pins, purple presence) */
-    --gold:#D9C9B7;        /* Sand (link hover) */
-    --purple:#C8AEDB;      /* bright dusty purple — section labels */
+    --bg:#3E3142; --panel:#473A4B; --fg:#F2ECE3; --muted:#C6B8CB; --rule:#5A4D5C;
+    --link:#F2ECE3; --accent:#C76B6B; --accent2:#9A7FB0; --gold:#D9C9B7; --purple:#C8AEDB;
     --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
     --display:"Fraunces", "Source Serif 4", Georgia, serif;
     --cjk:"Noto Serif SC", serif;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#2C2230;        /* deeper near-black plum */
-      --panel:#372B3B;
-      --fg:#F2ECE3;
-      --rule:#473A4B;
-      --link:#F2ECE3;
-      --muted:#BBAEC0;
-      --accent:#CF7474;
-      --accent2:#A98FBE;
-      --gold:#D9C9B7;
-      --purple:#CFB6E0;
+      --bg:#2C2230; --panel:#372B3B; --fg:#F2ECE3; --rule:#473A4B; --link:#F2ECE3;
+      --muted:#BBAEC0; --accent:#CF7474; --accent2:#A98FBE; --gold:#D9C9B7; --purple:#CFB6E0;
     }
   }
 
@@ -70,7 +50,6 @@
   a{color:var(--link); text-decoration:none; border-bottom:1px solid var(--rule)}
   a:hover{border-color:var(--gold); color:var(--accent)}
 
-  /* ---------- two-column layout ---------- */
   .layout{display:flex; gap:56px; max-width:1000px; margin:0 auto; padding:60px 0 100px}
   .sidebar{flex:0 0 224px; position:sticky; top:48px; align-self:flex-start}
   .content{flex:1 1 auto; min-width:0; max-width:640px}
@@ -79,7 +58,6 @@
     .sidebar{position:static; flex-basis:auto; width:100%}
   }
 
-  /* ---------- sidebar ---------- */
   .brand h1{font-family:var(--display); font-weight:500; font-size:34px; line-height:1.04; letter-spacing:-.01em; margin:0}
   .brand h1::after{content:""; display:block; width:34px; height:2px; background:var(--accent); margin:12px 0 0}
   .brand .tag{color:var(--muted); font-style:italic; font-size:16px; line-height:1.5; margin:14px 0 26px}
@@ -91,8 +69,13 @@
   .side-socials{display:flex; flex-wrap:wrap; gap:14px; font-size:13px}
   .side-socials a{border:none; color:var(--muted)}
   .side-socials a:hover{color:var(--accent)}
+  /* instagram icon link (used next to projects) */
+  .ig{border:none; color:var(--muted); display:inline-flex; align-items:center; margin-left:auto; flex:0 0 auto}
+  .ig:hover{color:var(--accent)}
+  .ig svg{width:18px; height:18px; display:block}
+  .side-socials .ig{margin-left:0}
+  .side-socials .ig svg{width:16px; height:16px}
 
-  /* ---------- content sections ---------- */
   section{padding:38px 0; border-top:1px solid var(--rule); scroll-margin-top:24px}
   section:first-of-type{border-top:none; padding-top:0}
   h2{
@@ -107,7 +90,6 @@
   .lead{font-size:21px; line-height:1.55}
   .muted{color:var(--muted)}
 
-  /* list row: title left, meta right, optional blurb under */
   ul.list{list-style:none; margin:0; padding:0}
   ul.list li{padding:10px 0; border-bottom:1px dotted var(--rule)}
   ul.list li:last-child{border-bottom:none}
@@ -119,13 +101,11 @@
   ul.bullets li{margin:5px 0}
   ul.bullets li::marker{color:var(--accent2)}
 
-  /* tools card + pill button */
   .toolcard{border:1px solid var(--rule); border-radius:8px; padding:22px 24px}
   .toolcard h3{margin:0 0 6px}
   .btn{display:inline-block; font-family:var(--display); font-size:14px; border:1px solid var(--fg); border-radius:999px; padding:9px 18px; color:var(--fg)}
   .btn:hover{background:var(--fg); color:var(--bg); border-color:var(--fg)}
 
-  /* collapsible (dropdown) sections */
   details.fold{margin:34px 0 0}
   details.fold > summary{
     list-style:none; cursor:pointer;
@@ -139,10 +119,7 @@
 
   footer{padding-top:36px; border-top:1px solid var(--rule); color:var(--muted); font-size:13px}
 
-  /* ---------- atlas / map ---------- */
   #atlas-map{height:420px; width:100%; border:1px solid var(--rule); border-radius:6px; overflow:hidden; background:var(--rule); margin:6px 0 10px}
-  /* tint the dark map tiles toward the plum palette so the map matches the site.
-     nudge the hue-rotate value (more purple up, more blue down) to taste. */
   .leaflet-tile-pane{ filter:sepia(.5) hue-rotate(238deg) saturate(.8) brightness(.9) contrast(1.05); }
   .leaflet-container{font:14px var(--serif); background:var(--bg)}
   .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--bg); color:var(--fg); box-shadow:0 1px 6px rgba(0,0,0,.25)}
@@ -151,13 +128,11 @@
   .pop h3{margin:0 0 4px; font-size:14px}
   .pop .g{color:var(--muted); font-size:12px; margin:0 0 5px}
   .pop a{font-size:12px}
-  .pop img{width:100%; border-radius:2px; margin:4px 0 6px; display:block}
   .leaflet-control-layers{background:var(--bg); color:var(--fg); border:1px solid var(--rule); border-radius:3px; box-shadow:none; font:13px var(--serif)}
   .leaflet-control-layers-list{padding:8px 10px}
   .leaflet-control-layers label{display:block; margin:3px 0}
   .leaflet-bar a{background:var(--bg); color:var(--fg); border-bottom:1px solid var(--rule)}
 
-  /* alternate defaults — mauve feature panel */
   .questions{
     background:var(--panel);
     background:color-mix(in srgb, var(--accent2) 16%, var(--bg));
@@ -178,23 +153,23 @@
   <aside class="sidebar">
     <div class="brand">
       <h1>Anna</h1>
-      <p class="tag">Rainbow, rocks, flowers.<br>I climb rocks, I think about things with no right answers, and create worlds.</p>
+      <p class="tag">Rainbows, rocks, flowers.<br>Musings, time, and randomness.</p>
     </div>
 
     <nav class="side">
       <a class="grp" href="#atlas">Atlas</a>
       <a class="grp" href="#projects">Projects</a>
-      <a class="grp" href="#tools">Tools</a>
       <a class="grp" href="#thoughts">Thoughts</a>
       <a class="sub" href="#defaults">Alternate Defaults</a>
       <a class="sub" href="#writing">Writing</a>
       <a class="grp" href="#love">Love</a>
       <a class="sub" href="#date">A JD for My Future Partner(s)</a>
+      <a class="grp" href="#tools">Tools</a>
     </nav>
 
     <div class="side-socials">
       <a href="https://x.com/gizmothegizzer" rel="me">x</a>
-      <a href="https://instagram.com/gizmothegizzer" rel="me">instagram</a>
+      <a class="ig" href="https://instagram.com/gizmothegizzer" rel="me" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://www.linkedin.com/in/gizmogiz/" rel="me">linkedin</a>
       <a href="https://xhslink.com/m/63cjko2MT2H" rel="me">小红书</a>
     </div>
@@ -216,46 +191,60 @@
     <!-- PROJECTS -->
     <section id="projects">
       <h2>Projects</h2>
+
+      <p class="catlabel">Main Quest</p>
       <ul class="list">
         <li>
-          <div class="row"><a href="https://perena.org">Perena</a></div>
-          <p class="blurb">A stablebank — borderless dollar savings and investing, open to anyone with an internet connection.</p>
+          <div class="row">
+            <a href="https://perena.org">Perena</a>
+            <a class="ig" href="https://www.instagram.com/perena_org/" aria-label="Perena on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+          <p class="blurb">You know stocks and T-bills. Turns out there's a whole menu — private credit, real-world assets, market-neutral strategies — that regular people just never get offered. Perena hands you the menu.</p>
+        </li>
+      </ul>
+
+      <p class="catlabel">Side Quests</p>
+      <ul class="list">
+        <li>
+          <div class="row">
+            <span>Stoneflower Climbing</span> <!-- EDIT: add site link + finalize name -->
+            <a class="ig" href="https://www.instagram.com/stone_flr/" aria-label="Stoneflower on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+          <p class="blurb">Purveyor of fine holds and good design for climbers.</p>
         </li>
         <li>
-          <div class="row"><a href="https://tattoary.com">Tattoary</a></div>
+          <div class="row">
+            <a href="https://tattoary.com">Tattoary</a>
+            <a class="ig" href="https://www.instagram.com/tattoary0" aria-label="Tattoary on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
           <p class="blurb">An AI tattoo designer — dream up a custom piece and see it on your own skin before you commit.</p>
         </li>
       </ul>
-    </section>
-
-    <!-- TOOLS -->
-    <section id="tools">
-      <h2>Tools</h2>
-      <div class="toolcard">
-        <h3>The Founder's Schema</h3>
-        <p class="muted" style="margin:0 0 16px">An interactive self-assessment — 75 questions that surface the patterns quietly driving how you decide, and, for founders and other high-agency people, how you build. Free, about 15 minutes.</p>
-        <a class="btn" href="founders-schema/">Take the assessment →</a>
-      </div>
     </section>
 
     <!-- THOUGHTS -->
     <section id="thoughts">
       <h2>Thoughts</h2>
 
-      <h3 id="defaults">Alternate Defaults</h3>
-      <p class="muted" style="margin:0 0 16px">The defaults I'd like to rewrite.</p>
-      <div class="questions">
-        <ol>
-          <li>Family is something we build, not just inherit.</li>
-          <li>Education should begin with play and end with the discovery of meaning.</li>
-          <li>Walls are meant to be climbed.</li>
-          <li>Money is as free as information on the Internet.</li>
-          <li>Tattoos become museum-grade art, collected over a lifetime.</li>
-          <li>Loving more than one person isn't treated as a moral failure.</li>
-          <li>Everyday objects deserve the same care as works of art.</li>
-          <li>Every woman owns a great vibrator.</li>
-        </ol>
-      </div>
+      <!-- Alternate Defaults (collapsible) -->
+      <details class="fold" id="defaults">
+        <summary>Alternate Defaults</summary>
+        <div class="fold-body">
+          <p class="muted" style="margin:0 0 16px">The defaults I'd like to rewrite.</p>
+          <div class="questions">
+            <ol>
+              <li>Family is something we build, not just inherit.</li>
+              <li>Education should begin with play and end with the discovery of meaning.</li>
+              <li>Walls are meant to be climbed.</li>
+              <li>Money is as free as information on the Internet.</li>
+              <li>Tattoos become museum-grade art, collected over a lifetime.</li>
+              <li>Loving more than one person isn't treated as a moral failure.</li>
+              <li>Everyday objects deserve the same care as works of art.</li>
+              <li>Every woman owns a great vibrator.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
 
       <!-- Writing (collapsible) -->
       <details class="fold" id="writing">
@@ -365,7 +354,7 @@
             <li>Honest, especially when it's uncomfortable.</li>
             <li>Curious about a lot of things.</li>
             <li>Physically active.</li>
-            <li>Wants children (likely through surrogacy).</li>
+            <li>Wants children.</li>
             <li>Not actively religious.</li>
           </ul>
 
@@ -392,6 +381,16 @@
       </details>
     </section>
 
+    <!-- TOOLS -->
+    <section id="tools">
+      <h2>Tools</h2>
+      <div class="toolcard">
+        <h3>The Founder's Schema</h3>
+        <p class="muted" style="margin:0 0 16px">An interactive self-assessment that surfaces the patterns quietly driving how you make decisions, especially valuable for founders.</p>
+        <a class="btn" href="founders-schema/">Take the assessment →</a>
+      </div>
+    </section>
+
     <footer>
       <p>© 2026 Anna.</p>
     </footer>
@@ -403,117 +402,97 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-/* ----------------------------------------------------------------
-   EDIT YOUR PINS HERE.
-   Each entry: name, lat, lng, and any optional fields you want shown.
-   Find lat/lng fast: open Google Maps, right-click a spot, click the
-   numbers to copy them. Leave a field out (or "") to hide it.
-   ---------------------------------------------------------------- */
-
 // ---- LIST 1: CLIMBING ----
 const CLIMBING = [
-  // East Coast / New England
-  { name:"Virginia",          lat:36.620, lng:-81.500, sub:"USA · crag?" },        // EDIT: which crag?
+  { name:"Virginia",          lat:36.620, lng:-81.500, sub:"USA · crag?" },
   { name:"Rumney",            lat:43.800, lng:-71.840, sub:"New Hampshire, USA" },
   { name:"Farley",            lat:42.600, lng:-72.450, sub:"Massachusetts, USA" },
   { name:"Great Barrington",  lat:42.195, lng:-73.362, sub:"Massachusetts, USA" },
   { name:"Ice Pond",          lat:41.450, lng:-73.600, sub:"New York, USA" },
   { name:"Acadia",            lat:44.340, lng:-68.270, sub:"Maine, USA" },
-  // South (Chattanooga area)
   { name:"Rocktown",          lat:34.770, lng:-85.370, sub:"Georgia, USA" },
   { name:"Stone Fort (LRC)",  lat:35.130, lng:-85.360, sub:"Tennessee, USA" },
   { name:"Hueco Tanks",       lat:31.920, lng:-106.040, sub:"Texas, USA" },
-  // Midwest
   { name:"Holy Boulders",     lat:37.620, lng:-89.330, sub:"Illinois, USA" },
   { name:"Devil's Lake",      lat:43.430, lng:-89.730, sub:"Wisconsin, USA" },
   { name:"Governor Dodge",    lat:43.020, lng:-90.140, sub:"Wisconsin, USA" },
-  // Colorado
   { name:"Guanella Pass",     lat:39.600, lng:-105.710, sub:"Colorado, USA" },
   { name:"Golden",            lat:39.760, lng:-105.220, sub:"Colorado, USA" },
-  // West / California
   { name:"Red Rock",          lat:36.130, lng:-115.430, sub:"Nevada, USA" },
   { name:"Joshua Tree",       lat:33.880, lng:-115.900, sub:"California, USA" },
   { name:"Yosemite",          lat:37.845, lng:-119.533, sub:"California, USA" },
-  // Europe
   { name:"Fontainebleau",     lat:48.405, lng:2.550,    sub:"France" },
-  { name:"Near Prague",       lat:49.950, lng:14.300,   sub:"Czechia · crag?" }       // EDIT
+  { name:"Near Prague",       lat:49.950, lng:14.300,   sub:"Czechia · crag?" }
 ];
 
-// ---- LIST 2: TRAVEL (add a country: copy a line, change name + lat/lng) ----
+// ---- LIST 2: TRAVEL ----
 const TRAVEL = [
-  // Asia
-  { name:"Cambodia",             lat:11.56,  lng:104.92 },
-  { name:"China",                lat:39.90,  lng:116.41 },
-  { name:"India",                lat:28.61,  lng:77.21 },
-  { name:"Indonesia",            lat:-6.21,  lng:106.85 },
-  { name:"Israel",               lat:32.08,  lng:34.78 },
-  { name:"Japan",                lat:35.68,  lng:139.69, note:"Favorite city: Tokyo." },
-  { name:"Jordan",               lat:31.95,  lng:35.93 },
-  { name:"Malaysia",             lat:3.14,   lng:101.69 },
-  { name:"Palestine",            lat:31.90,  lng:35.20 },
-  { name:"Qatar",                lat:25.29,  lng:51.53 },
-  { name:"Singapore",            lat:1.35,   lng:103.82 },
-  { name:"South Korea",          lat:37.57,  lng:126.98 },
-  { name:"Thailand",             lat:13.75,  lng:100.50 },
-  { name:"Turkey",               lat:41.01,  lng:28.98 },
-  { name:"Vietnam",              lat:21.03,  lng:105.85 },
-  { name:"United Arab Emirates", lat:25.20,  lng:55.27 },
-  { name:"Maldives",             lat:4.17,   lng:73.51 },
-  { name:"Taiwan",               lat:25.03,  lng:121.57 },
-  { name:"Hong Kong",            lat:22.32,  lng:114.17 },
-  // Africa
-  { name:"Egypt",                lat:30.04,  lng:31.24 },
-  { name:"Morocco",              lat:31.63,  lng:-7.99 },
-  { name:"Senegal",              lat:14.72,  lng:-17.47 },
-  { name:"Tunisia",              lat:36.81,  lng:10.18 },
-  // Europe
-  { name:"Austria",              lat:48.21,  lng:16.37 },
-  { name:"Belgium",              lat:50.85,  lng:4.35 },
-  { name:"Bulgaria",             lat:42.70,  lng:23.32 },
-  { name:"Czechia",              lat:50.08,  lng:14.44 },
-  { name:"Estonia",              lat:59.44,  lng:24.75 },
-  { name:"Finland",              lat:60.17,  lng:24.94 },
-  { name:"France",               lat:48.85,  lng:2.35 },
-  { name:"Germany",              lat:52.52,  lng:13.40 },
-  { name:"Hungary",              lat:47.50,  lng:19.04 },
-  { name:"Iceland",              lat:64.15,  lng:-21.94 },
-  { name:"Italy",                lat:41.90,  lng:12.50 },
-  { name:"Kosovo",               lat:42.66,  lng:21.17 },
-  { name:"Latvia",               lat:56.95,  lng:24.11 },
-  { name:"Luxembourg",           lat:49.61,  lng:6.13 },
-  { name:"Monaco",               lat:43.74,  lng:7.42 },
-  { name:"Netherlands",          lat:52.37,  lng:4.90 },
-  { name:"Poland",               lat:52.23,  lng:21.01 },
-  { name:"Portugal",             lat:38.72,  lng:-9.14 },
-  { name:"Serbia",               lat:44.79,  lng:20.45 },
-  { name:"Spain",                lat:40.42,  lng:-3.70 },
-  { name:"Sweden",               lat:59.33,  lng:18.07 },
-  { name:"Switzerland",          lat:46.95,  lng:7.45 },
-  { name:"North Macedonia",      lat:42.00,  lng:21.43 },
-  { name:"United Kingdom",       lat:51.51,  lng:-0.13 },
-  { name:"Vatican City",         lat:41.90,  lng:12.45 },
-  // North America & Caribbean
-  { name:"Canada",               lat:43.65,  lng:-79.38 },
-  { name:"Costa Rica",           lat:9.93,   lng:-84.08 },
-  { name:"Cuba",                 lat:23.11,  lng:-82.37 },
-  { name:"Dominican Republic",   lat:18.49,  lng:-69.93 },
-  { name:"Haiti",                lat:18.59,  lng:-72.31 },
-  { name:"Jamaica",              lat:18.02,  lng:-76.80 },
-  { name:"Mexico",               lat:19.43,  lng:-99.13 },
-  { name:"United States",        lat:38.90,  lng:-77.04 },
-  // South America
-  { name:"Argentina",            lat:-34.60, lng:-58.38 },
-  { name:"Bolivia",              lat:-16.50, lng:-68.15 },
-  { name:"Brazil",               lat:-22.91, lng:-43.17 },
-  { name:"Colombia",             lat:4.71,   lng:-74.07 },
-  { name:"Ecuador",              lat:-0.18,  lng:-78.47 },
-  { name:"Peru",                 lat:-12.05, lng:-77.04 },
-  { name:"Uruguay",              lat:-34.90, lng:-56.16 }
+  { name:"Cambodia", lat:11.56, lng:104.92 },
+  { name:"China", lat:39.90, lng:116.41 },
+  { name:"India", lat:28.61, lng:77.21 },
+  { name:"Indonesia", lat:-6.21, lng:106.85 },
+  { name:"Israel", lat:32.08, lng:34.78 },
+  { name:"Japan", lat:35.68, lng:139.69, note:"Favorite city: Tokyo." },
+  { name:"Jordan", lat:31.95, lng:35.93 },
+  { name:"Malaysia", lat:3.14, lng:101.69 },
+  { name:"Palestine", lat:31.90, lng:35.20 },
+  { name:"Qatar", lat:25.29, lng:51.53 },
+  { name:"Singapore", lat:1.35, lng:103.82 },
+  { name:"South Korea", lat:37.57, lng:126.98 },
+  { name:"Thailand", lat:13.75, lng:100.50 },
+  { name:"Turkey", lat:41.01, lng:28.98 },
+  { name:"Vietnam", lat:21.03, lng:105.85 },
+  { name:"United Arab Emirates", lat:25.20, lng:55.27 },
+  { name:"Maldives", lat:4.17, lng:73.51 },
+  { name:"Taiwan", lat:25.03, lng:121.57 },
+  { name:"Hong Kong", lat:22.32, lng:114.17 },
+  { name:"Egypt", lat:30.04, lng:31.24 },
+  { name:"Morocco", lat:31.63, lng:-7.99 },
+  { name:"Senegal", lat:14.72, lng:-17.47 },
+  { name:"Tunisia", lat:36.81, lng:10.18 },
+  { name:"Austria", lat:48.21, lng:16.37 },
+  { name:"Belgium", lat:50.85, lng:4.35 },
+  { name:"Bulgaria", lat:42.70, lng:23.32 },
+  { name:"Czechia", lat:50.08, lng:14.44 },
+  { name:"Estonia", lat:59.44, lng:24.75 },
+  { name:"Finland", lat:60.17, lng:24.94 },
+  { name:"France", lat:48.85, lng:2.35 },
+  { name:"Germany", lat:52.52, lng:13.40 },
+  { name:"Hungary", lat:47.50, lng:19.04 },
+  { name:"Iceland", lat:64.15, lng:-21.94 },
+  { name:"Italy", lat:41.90, lng:12.50 },
+  { name:"Kosovo", lat:42.66, lng:21.17 },
+  { name:"Latvia", lat:56.95, lng:24.11 },
+  { name:"Luxembourg", lat:49.61, lng:6.13 },
+  { name:"Monaco", lat:43.74, lng:7.42 },
+  { name:"Netherlands", lat:52.37, lng:4.90 },
+  { name:"Poland", lat:52.23, lng:21.01 },
+  { name:"Portugal", lat:38.72, lng:-9.14 },
+  { name:"Serbia", lat:44.79, lng:20.45 },
+  { name:"Spain", lat:40.42, lng:-3.70 },
+  { name:"Sweden", lat:59.33, lng:18.07 },
+  { name:"Switzerland", lat:46.95, lng:7.45 },
+  { name:"North Macedonia", lat:42.00, lng:21.43 },
+  { name:"United Kingdom", lat:51.51, lng:-0.13 },
+  { name:"Vatican City", lat:41.90, lng:12.45 },
+  { name:"Canada", lat:43.65, lng:-79.38 },
+  { name:"Costa Rica", lat:9.93, lng:-84.08 },
+  { name:"Cuba", lat:23.11, lng:-82.37 },
+  { name:"Dominican Republic", lat:18.49, lng:-69.93 },
+  { name:"Haiti", lat:18.59, lng:-72.31 },
+  { name:"Jamaica", lat:18.02, lng:-76.80 },
+  { name:"Mexico", lat:19.43, lng:-99.13 },
+  { name:"United States", lat:38.90, lng:-77.04 },
+  { name:"Argentina", lat:-34.60, lng:-58.38 },
+  { name:"Bolivia", lat:-16.50, lng:-68.15 },
+  { name:"Brazil", lat:-22.91, lng:-43.17 },
+  { name:"Colombia", lat:4.71, lng:-74.07 },
+  { name:"Ecuador", lat:-0.18, lng:-78.47 },
+  { name:"Peru", lat:-12.05, lng:-77.04 },
+  { name:"Uruguay", lat:-34.90, lng:-56.16 }
 ];
 
-/* ---------------- map setup (you shouldn't need to touch below) ---------------- */
-const tiles = "dark_nolabels";  // clean dark tiles, no city labels
-
+const tiles = "dark_nolabels";
 const map = L.map("atlas-map", { scrollWheelZoom:true, worldCopyJump:true }).setView([25,15], 2);
 L.tileLayer("https://{s}.basemaps.cartocdn.com/" + tiles + "/{z}/{x}/{y}{r}.png", {
   attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:"abcd", maxZoom:19
@@ -521,16 +500,8 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/" + tiles + "/{z}/{x}/{y}{r}.png"
 
 function popupHTML(s){
   let h = '<div class="pop"><h3>'+s.name+'</h3>';
-  if(s.sub)        h += '<p class="g">'+s.sub+'</p>';
-  if(s.photo)      h += '<img src="'+s.photo+'" alt="">';
-  if(s.grade)      h += '<p class="g">Grades: '+s.grade+'</p>';
-  if(s.favorites)  h += '<p class="g">Favorite problems: '+s.favorites+'</p>';
-  if(s.note)       h += '<p class="g">'+s.note+'</p>';
-  const links = [];
-  if(s.guide) links.push('<a href="'+s.guide+'">guide</a>');
-  if(s.xhs)   links.push('<a href="'+s.xhs+'">小红书</a>');
-  if(s.ig)    links.push('<a href="'+s.ig+'">instagram</a>');
-  if(links.length) h += '<p>'+links.join(" · ")+'</p>';
+  if(s.sub)       h += '<p class="g">'+s.sub+'</p>';
+  if(s.note)      h += '<p class="g">'+s.note+'</p>';
   return h + '</div>';
 }
 function makeLayer(items, color){
@@ -540,22 +511,17 @@ function makeLayer(items, color){
     }).bindTooltip(s.name).bindPopup(popupHTML(s));
   }));
 }
-
-const climbingLayer = makeLayer(CLIMBING, "#C76B6B").addTo(map);  // Rust
-const travelLayer   = makeLayer(TRAVEL,   "#9A7FB0").addTo(map);  // Mauve
-
+const climbingLayer = makeLayer(CLIMBING, "#C76B6B").addTo(map);
+const travelLayer   = makeLayer(TRAVEL,   "#9A7FB0").addTo(map);
 L.control.layers(null, {
   "&#9679; Climbing": climbingLayer,
   "&#9679; Travel":   travelLayer
 }, { collapsed:false, position:"topright" }).addTo(map);
 
-// open external links in a new tab (internal #anchors + the /founders-schema/ subpage stay in-page)
-document.querySelectorAll('a[href^="http"]').forEach(function(a){
-  a.target = "_blank";
-  a.rel = "noopener";
-});
+// open external links in a new tab (internal #anchors + /founders-schema/ stay in-page)
+document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target="_blank"; a.rel="noopener"; });
 
-// open a collapsible section when it's linked to (from the sidebar or a direct URL)
+// open a collapsible section when linked to
 function openTarget(){
   if(!location.hash) return;
   const el = document.querySelector(location.hash);
