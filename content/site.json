@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "name": "Anna",
+    "tagline": "Rainbows, rocks, flowers.",
+    "subline": "Musings, time, and randomness.",
+    "updated": "2026-11-09"
+  },
+  "social": [
+    { "label": "x", "href": "https://x.com/gizmothegizzer" },
+    { "label": "instagram", "href": "https://instagram.com/gizmothegizzer", "icon": "ig" },
+    { "label": "linkedin", "href": "https://www.linkedin.com/in/gizmogiz/" },
+    { "label": "小红书", "href": "https://xhslink.com/m/63cjko2MT2H" }
+  ],
+  "projects": {
+    "main": [
+      {
+        "name": "Perena",
+        "href": "https://perena.org",
+        "instagram": "https://www.instagram.com/perena_org/",
+        "blurb": "You know stocks and T-bills. Turns out there's a whole menu — private credit, real-world assets, market-neutral strategies — that regular people just never get offered. Perena hands you the menu."
+      },
+      {
+        "name": "Stoneflower Climbing",
+        "href": "https://www.instagram.com/stone_flr/",
+        "instagram": "https://www.instagram.com/stone_flr/",
+        "blurb": "Purveyor of fine holds and good design for climbers. Going quite well."
+      }
+    ],
+    "side": []
+  },
+  "writing": [
+    {
+      "category": "Stablecoins & the industry",
+      "items": [
+        {
+          "title": "Vaults are ETFs on Steroids",
+          "href": "https://x.com/gizmothegizzer/status/2029336058064707858",
+          "date": "Mar 2026",
+          "blurb": "From a 1774 Dutch fund to on-chain vaults — why programmable vaults are the ETF of the blockchain era."
+        },
+        {
+          "title": "Solana is Paying $500M a Year to Fund Its Competitors",
+          "href": "https://x.com/gizmothegizzer/status/1979318917341298987",
+          "date": "Oct 2025",
+          "blurb": "How idle stablecoin reserves quietly subsidize rival ecosystems — and what Solana must do about it."
+        },
+        {
+          "title": "SOL needs more than DAT",
+          "href": "https://x.com/gizmothegizzer/status/1950255338155843845",
+          "date": "Jul 2025",
+          "blurb": "Why treasury vehicles aren't enough — the case for a $1B+ Solana-native ecosystem company to win the capital war."
+        },
+        {
+          "title": "Stablecoins Are for Financial Inclusion",
+          "href": "https://x.com/gizmothegizzer/status/1927849497457009143",
+          "date": "May 2025",
+          "blurb": "A rebuttal to the FT and WSJ: stablecoins as a tool for financial inclusion — and why that's good business too."
+        },
+        {
+          "title": "Stablecoins Might Break Money",
+          "href": "https://x.com/gizmothegizzer/status/1907078354227855417",
+          "date": "Apr 2025",
+          "blurb": "What the GENIUS and STABLE Acts really mean, and how 100%-reserve stablecoins could reshape monetary policy."
+        },
+        {
+          "title": "The End of Financial Feudalism",
+          "href": "https://x.com/gizmothegizzer/status/1890148958695039087",
+          "date": "Feb 2025",
+          "blurb": "Money as power — and how stablecoins challenge the centuries-old monopoly on creating it."
+        },
+        {
+          "title": "A Manifesto: Money Reimagined",
+          "href": "https://x.com/gizmothegizzer/status/1856390428654018887",
+          "date": "Nov 2024",
+          "blurb": "The founding thesis — money as humanity's coordination technology, and the missing infrastructure layer."
+        }
+      ]
+    },
+    {
+      "category": "Building Perena",
+      "items": [
+        {
+          "title": "We Almost Didn't Launch a Token",
+          "href": "https://x.com/gizmothegizzer/status/2023446336616505637",
+          "date": "Feb 2026",
+          "blurb": "The honest case for and against a token, and the loyalty-not-governance model we chose."
+        },
+        {
+          "title": "Slow Down, Perena",
+          "href": "https://x.com/gizmothegizzer/status/2019868945067438338",
+          "date": "Feb 2026",
+          "blurb": "Why I'm deliberately slowing the company down, and the 2026 roadmap for USD*."
+        },
+        {
+          "title": "Accelerating Perena — Part II",
+          "href": "https://x.com/gizmothegizzer/status/1928097974657126615",
+          "date": "May 2025",
+          "blurb": "The principles behind Perena: a public-good stablecoin list, risk transparency, and building for the underserved."
+        },
+        {
+          "title": "Accelerating Perena — Part I",
+          "href": "https://x.com/gizmothegizzer/status/1924593810832515194",
+          "date": "May 2025",
+          "blurb": "The StableBank vision — composable currencies, the liquidity layer, and where Perena is headed."
+        }
+      ]
+    },
+    {
+      "category": "Ideas & life",
+      "items": [
+        {
+          "title": "科技时代，人文从未缺席",
+          "href": "https://x.com/gizmothegizzer/status/1873955715737673963",
+          "date": "Dec 2024",
+          "blurb": "芝大哲学本科、近 70 国游历，反思人文与艺术在科技时代为何不可或缺。",
+          "lang": "zh"
+        },
+        {
+          "title": "【教育】我当了一年的寄宿妈妈",
+          "href": "https://x.com/gizmothegizzer/status/1817421952547508647",
+          "date": "Jul 2024",
+          "blurb": "当了一年寄宿家庭妈妈，从两位交换生与芝加哥公校，看教育与阶层。",
+          "lang": "zh"
+        },
+        {
+          "title": "【冻卵】经验分享",
+          "href": "https://x.com/gizmothegizzer/status/1803285876828495903",
+          "date": "Jun 2024",
+          "blurb": "冻卵全过程的真实经验、时间安排与注意事项分享。",
+          "lang": "zh"
+        }
+      ]
+    }
+  ],
+  "defaults": [
+    "Family is something we build, not just inherit.",
+    "Education should begin with play and end with the discovery of meaning.",
+    "Walls are meant to be climbed.",
+    "Money is as free as information on the Internet.",
+    "Everyday objects deserve the same care as works of art.",
+    "Loving more than one person isn't treated as a moral failure.",
+    "Tattoos become museum-grade art, collected over a lifetime.",
+    "Every woman owns a great vibrator."
+  ],
+  "climbing": [
+    { "name": "Virginia", "lat": 36.62, "lng": -81.5, "sub": "USA" },
+    { "name": "Rumney", "lat": 43.8, "lng": -71.84, "sub": "New Hampshire, USA" },
+    { "name": "Farley", "lat": 42.6, "lng": -72.45, "sub": "Massachusetts, USA" },
+    { "name": "Great Barrington", "lat": 42.195, "lng": -73.362, "sub": "Massachusetts, USA" },
+    { "name": "Ice Pond", "lat": 41.45, "lng": -73.6, "sub": "New York, USA" },
+    { "name": "Acadia", "lat": 44.34, "lng": -68.27, "sub": "Maine, USA" },
+    { "name": "Rocktown", "lat": 34.77, "lng": -85.37, "sub": "Georgia, USA" },
+    { "name": "Stone Fort (LRC)", "lat": 35.13, "lng": -85.36, "sub": "Tennessee, USA" },
+    { "name": "Hueco Tanks", "lat": 31.92, "lng": -106.04, "sub": "Texas, USA" },
+    { "name": "Holy Boulders", "lat": 37.62, "lng": -89.33, "sub": "Illinois, USA" },
+    { "name": "Devil's Lake", "lat": 43.43, "lng": -89.73, "sub": "Wisconsin, USA" },
+    { "name": "Governor Dodge", "lat": 43.02, "lng": -90.14, "sub": "Wisconsin, USA" },
+    { "name": "Guanella Pass", "lat": 39.6, "lng": -105.71, "sub": "Colorado, USA" },
+    { "name": "Golden", "lat": 39.76, "lng": -105.22, "sub": "Colorado, USA" },
+    { "name": "Red Rock", "lat": 36.13, "lng": -115.43, "sub": "Nevada, USA" },
+    { "name": "Joshua Tree", "lat": 33.88, "lng": -115.9, "sub": "California, USA" },
+    { "name": "Yosemite", "lat": 37.845, "lng": -119.533, "sub": "California, USA" },
+    { "name": "Fontainebleau", "lat": 48.405, "lng": 2.55, "sub": "France" },
+    { "name": "Near Prague", "lat": 49.95, "lng": 14.3, "sub": "Czechia" }
+  ],
+  "travel": [
+    { "name": "Cambodia", "lat": 11.56, "lng": 104.92 },
+    { "name": "China", "lat": 39.9, "lng": 116.41 },
+    { "name": "India", "lat": 28.61, "lng": 77.21 },
+    { "name": "Indonesia", "lat": -6.21, "lng": 106.85 },
+    { "name": "Israel", "lat": 32.08, "lng": 34.78 },
+    { "name": "Japan", "lat": 35.68, "lng": 139.69, "note": "Favorite city: Tokyo." },
+    { "name": "Jordan", "lat": 31.95, "lng": 35.93 },
+    { "name": "Malaysia", "lat": 3.14, "lng": 101.69 },
+    { "name": "Palestine", "lat": 31.9, "lng": 35.2 },
+    { "name": "Qatar", "lat": 25.29, "lng": 51.53 },
+    { "name": "Singapore", "lat": 1.35, "lng": 103.82 },
+    { "name": "South Korea", "lat": 37.57, "lng": 126.98 },
+    { "name": "Thailand", "lat": 13.75, "lng": 100.5 },
+    { "name": "Turkey", "lat": 41.01, "lng": 28.98 },
+    { "name": "Vietnam", "lat": 21.03, "lng": 105.85 },
+    { "name": "United Arab Emirates", "lat": 25.2, "lng": 55.27 },
+    { "name": "Maldives", "lat": 4.17, "lng": 73.51 },
+    { "name": "Taiwan", "lat": 25.03, "lng": 121.57 },
+    { "name": "Hong Kong", "lat": 22.32, "lng": 114.17 },
+    { "name": "Egypt", "lat": 30.04, "lng": 31.24 },
+    { "name": "Morocco", "lat": 31.63, "lng": -7.99 },
+    { "name": "Senegal", "lat": 14.72, "lng": -17.47 },
+    { "name": "Tunisia", "lat": 36.81, "lng": 10.18 },
+    { "name": "Austria", "lat": 48.21, "lng": 16.37 },
+    { "name": "Belgium", "lat": 50.85, "lng": 4.35 },
+    { "name": "Bulgaria", "lat": 42.7, "lng": 23.32 },
+    { "name": "Czechia", "lat": 50.08, "lng": 14.44 },
+    { "name": "Estonia", "lat": 59.44, "lng": 24.75 },
+    { "name": "Finland", "lat": 60.17, "lng": 24.94 },
+    { "name": "France", "lat": 48.85, "lng": 2.35 },
+    { "name": "Germany", "lat": 52.52, "lng": 13.4 },
+    { "name": "Hungary", "lat": 47.5, "lng": 19.04 },
+    { "name": "Iceland", "lat": 64.15, "lng": -21.94 },
+    { "name": "Italy", "lat": 41.9, "lng": 12.5 },
+    { "name": "Kosovo", "lat": 42.66, "lng": 21.17 },
+    { "name": "Latvia", "lat": 56.95, "lng": 24.11 },
+    { "name": "Luxembourg", "lat": 49.61, "lng": 6.13 },
+    { "name": "Monaco", "lat": 43.74, "lng": 7.42 },
+    { "name": "Netherlands", "lat": 52.37, "lng": 4.9 },
+    { "name": "Poland", "lat": 52.23, "lng": 21.01 },
+    { "name": "Portugal", "lat": 38.72, "lng": -9.14 },
+    { "name": "Serbia", "lat": 44.79, "lng": 20.45 },
+    { "name": "Spain", "lat": 40.42, "lng": -3.7 },
+    { "name": "Sweden", "lat": 59.33, "lng": 18.07 },
+    { "name": "Switzerland", "lat": 46.95, "lng": 7.45 },
+    { "name": "North Macedonia", "lat": 42.0, "lng": 21.43 },
+    { "name": "United Kingdom", "lat": 51.51, "lng": -0.13 },
+    { "name": "Vatican City", "lat": 41.9, "lng": 12.45 },
+    { "name": "Canada", "lat": 43.65, "lng": -79.38 },
+    { "name": "Costa Rica", "lat": 9.93, "lng": -84.08 },
+    { "name": "Cuba", "lat": 23.11, "lng": -82.37 },
+    { "name": "Dominican Republic", "lat": 18.49, "lng": -69.93 },
+    { "name": "Haiti", "lat": 18.59, "lng": -72.31 },
+    { "name": "Jamaica", "lat": 18.02, "lng": -76.8 },
+    { "name": "Mexico", "lat": 19.43, "lng": -99.13 },
+    { "name": "United States", "lat": 38.9, "lng": -77.04 },
+    { "name": "Argentina", "lat": -34.6, "lng": -58.38 },
+    { "name": "Bolivia", "lat": -16.5, "lng": -68.15 },
+    { "name": "Brazil", "lat": -22.91, "lng": -43.17 },
+    { "name": "Colombia", "lat": 4.71, "lng": -74.07 },
+    { "name": "Ecuador", "lat": -0.18, "lng": -78.47 },
+    { "name": "Peru", "lat": -12.05, "lng": -77.04 },
+    { "name": "Uruguay", "lat": -34.9, "lng": -56.16 }
+  ]
+}
