@@ -27,7 +27,7 @@ Omit `"lang"` for English. Use `"lang": "zh"` for Chinese pieces.
 
 Same file:
 
-- `projects.main` / `projects.side` — ventures
+- `projects` — ventures (array)
 - `climbing` / `travel` — atlas pins (`name`, `lat`, `lng`, optional `sub` / `note`)
 - `defaults` — Alternate Defaults lines
 - `social` — footer / nav links

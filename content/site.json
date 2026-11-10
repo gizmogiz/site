@@ -3,7 +3,7 @@
     "name": "Anna",
     "tagline": "Rainbows, rocks, flowers.",
     "subline": "Musings, time, and randomness.",
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "social": [
     { "label": "x", "href": "https://x.com/gizmothegizzer" },
@@ -11,23 +11,20 @@
     { "label": "linkedin", "href": "https://www.linkedin.com/in/gizmogiz/" },
     { "label": "小红书", "href": "https://xhslink.com/m/63cjko2MT2H" }
   ],
-  "projects": {
-    "main": [
-      {
-        "name": "Perena",
-        "href": "https://perena.org",
-        "instagram": "https://www.instagram.com/perena_org/",
-        "blurb": "You know stocks and T-bills. Turns out there's a whole menu — private credit, real-world assets, market-neutral strategies — that regular people just never get offered. Perena hands you the menu."
-      },
-      {
-        "name": "Stoneflower Climbing",
-        "href": "https://www.instagram.com/stone_flr/",
-        "instagram": "https://www.instagram.com/stone_flr/",
-        "blurb": "Purveyor of fine holds and good design for climbers. Going quite well."
-      }
-    ],
-    "side": []
-  },
+  "projects": [
+    {
+      "name": "Perena",
+      "href": "https://perena.org",
+      "instagram": "https://www.instagram.com/perena_org/",
+      "blurb": "You know stocks and T-bills. Turns out there's a whole menu — private credit, real-world assets, market-neutral strategies — that regular people just never get offered. Perena hands you the menu."
+    },
+    {
+      "name": "Stoneflower Climbing",
+      "href": "https://www.instagram.com/stone_flr/",
+      "instagram": "https://www.instagram.com/stone_flr/",
+      "blurb": "Purveyor of fine holds and good design for climbers. Going quite well."
+    }
+  ],
   "writing": [
     {
       "category": "Stablecoins & the industry",
@@ -148,6 +145,9 @@
     { "name": "Farley", "lat": 42.6, "lng": -72.45, "sub": "Massachusetts, USA" },
     { "name": "Great Barrington", "lat": 42.195, "lng": -73.362, "sub": "Massachusetts, USA" },
     { "name": "Ice Pond", "lat": 41.45, "lng": -73.6, "sub": "New York, USA" },
+    { "name": "Powerlinez", "lat": 41.058, "lng": -74.188, "sub": "New Jersey, USA" },
+    { "name": "Central Park", "lat": 40.782, "lng": -73.965, "sub": "New York, USA" },
+    { "name": "East Marion", "lat": 41.129, "lng": -72.329, "sub": "Long Island, New York, USA" },
     { "name": "Acadia", "lat": 44.34, "lng": -68.27, "sub": "Maine, USA" },
     { "name": "Rocktown", "lat": 34.77, "lng": -85.37, "sub": "Georgia, USA" },
     { "name": "Stone Fort (LRC)", "lat": 35.13, "lng": -85.36, "sub": "Tennessee, USA" },

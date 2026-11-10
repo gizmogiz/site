@@ -8,333 +8,259 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Noto+Serif+SC:wght@400;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F3EFE6;
-    --bg-deep:#E7E0D2;
-    --ink:#1A1A17;
-    --muted:#5C584F;
-    --line:rgba(26,26,23,.14);
-    --coral:#E85D4C;
-    --teal:#2F6F6A;
-    --chartreuse:#C6D94E;
-    --marigold:#E8A83A;
-    --sky:#7EB7C9;
-    --panel:#FFFCF6;
-    --display:"Syne", "Helvetica Neue", sans-serif;
+    --paper:#FFFDF8;
+    --blush:#FFD6E4;
+    --mint:#D7F0D4;
+    --lilac:#D9D0F0;
+    --sand:#F3E6CF;
+    --ink:#161513;
+    --muted:#5E5952;
+    --coral:#D96B4C;
+    --moss:#6A8F7A;
+    --line:rgba(22,21,19,.14);
+    --display:"Bodoni Moda", "Times New Roman", serif;
     --serif:"Literata", Georgia, serif;
     --cjk:"Noto Serif SC", "Literata", serif;
     --ease:cubic-bezier(.22,1,.36,1);
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth; scroll-padding-top:72px}
+  html{scroll-behavior:smooth; scroll-padding-top:28px}
   body{
     margin:0;
     color:var(--ink);
-    background:
-      radial-gradient(1200px 700px at 12% -10%, rgba(232,168,58,.22), transparent 55%),
-      radial-gradient(900px 600px at 90% 8%, rgba(126,183,201,.28), transparent 50%),
-      radial-gradient(800px 500px at 70% 90%, rgba(198,217,78,.18), transparent 55%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
-    background-attachment: fixed;
-    font:18px/1.7 var(--serif);
+    background:var(--paper);
+    font:19px/1.7 var(--serif);
     -webkit-font-smoothing:antialiased;
   }
   :lang(zh), .cjk{font-family:var(--cjk)}
-  a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
+  a{color:inherit}
   a:hover{color:var(--coral)}
   img{display:block; max-width:100%; height:auto}
-  code{font-size:.92em}
+  code{font-size:.9em}
 
-  .topnav{
-    position:fixed; inset:0 0 auto; z-index:40;
+  .topbar{
     display:flex; align-items:center; justify-content:space-between;
-    gap:20px; padding:14px 28px;
-    backdrop-filter:blur(14px);
-    background:rgba(243,239,230,.72);
-    border-bottom:1px solid var(--line);
+    gap:20px; padding:18px 28px; border-bottom:1px solid var(--line);
+    background:var(--paper); position:sticky; top:0; z-index:20;
   }
-  .topnav .mark{
-    font-family:var(--display); font-weight:800; font-size:18px;
-    letter-spacing:-.03em; text-decoration:none;
+  .mark{
+    font-family:var(--display); font-weight:600; font-size:22px;
+    letter-spacing:-.02em; text-decoration:none;
   }
-  .nav{display:flex; flex-wrap:wrap; gap:4px 18px; font-size:13px; font-family:var(--display); font-weight:500}
-  .nav a{text-decoration:none; opacity:.78}
-  .nav a:hover{opacity:1; color:var(--ink)}
-  .social{display:flex; gap:12px; align-items:center; font-size:12px; font-family:var(--display)}
-  .social a{text-decoration:none; opacity:.7}
-  .social a:hover{opacity:1}
-  .ig{display:inline-flex; border:none; text-decoration:none}
-  .ig svg{width:16px; height:16px}
+  .nav{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:14px}
+  .nav a{text-decoration:none; color:var(--muted)}
+  .nav a:hover{color:var(--ink)}
+  .social{display:flex; gap:12px; align-items:center; font-size:13px}
+  .social a{text-decoration:none; color:var(--muted)}
+  .social a:hover{color:var(--ink)}
+  .ig{display:inline-flex; text-decoration:none}
+  .ig svg{width:15px; height:15px}
 
+  /* Hero — literary left + painted right, BFF pacing */
   .hero{
-    position:relative; min-height:100vh; min-height:100dvh;
-    display:grid; place-items:end start;
-    padding:120px 28px 72px; overflow:clip;
+    display:grid; grid-template-columns:minmax(280px,.92fr) minmax(300px,1.08fr);
+    min-height:92vh; border-bottom:1px solid var(--line);
   }
-  .hero-collage{
-    position:absolute; inset:0; z-index:0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr .85fr 1fr;
-    grid-template-rows:1fr .85fr 1.05fr;
-    gap:10px; padding:72px 18px 18px;
-    will-change:transform;
-  }
-  .hero-collage figure{
-    margin:0; overflow:hidden; position:relative;
-    border:1px solid rgba(26,26,23,.12);
-    box-shadow:0 18px 40px rgba(26,26,23,.08);
-  }
-  .hero-collage img{
-    width:100%; height:100%; object-fit:cover;
-    filter:saturate(1.08) contrast(1.04);
-    transform:scale(1.04);
-    transition:transform 1.2s var(--ease);
-  }
-  .hero-collage figure:hover img{transform:scale(1.1)}
-  .hero-collage .a{grid-area:1 / 1 / 3 / 2}
-  .hero-collage .b{grid-area:1 / 2 / 2 / 4}
-  .hero-collage .c{grid-area:1 / 4 / 2 / 5}
-  .hero-collage .d{grid-area:2 / 2 / 3 / 3}
-  .hero-collage .e{grid-area:2 / 3 / 4 / 5}
-  .hero-collage .f{grid-area:3 / 1 / 4 / 3}
-  .hero-collage::after{
-    content:""; position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, rgba(243,239,230,.15) 0%, rgba(243,239,230,.82) 72%, var(--bg) 100%),
-      linear-gradient(90deg, rgba(243,239,230,.55) 0%, transparent 38%);
-    pointer-events:none;
-  }
-
   .hero-copy{
-    position:relative; z-index:2; max-width:720px;
+    padding:clamp(48px,8vw,96px) clamp(24px,4vw,56px);
+    display:flex; flex-direction:column; justify-content:center;
+    background:var(--paper);
   }
-  .hero-copy .eyebrow{
-    font-family:var(--display); font-size:12px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--teal); margin:0 0 18px;
+  .eyebrow{
+    margin:0 0 22px; font-size:12px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--moss);
   }
   .hero-copy h1{
-    margin:0; font-family:var(--display); font-weight:800;
-    font-size:clamp(72px, 16vw, 168px); line-height:.86;
-    letter-spacing:-.06em;
+    margin:0; font-family:var(--display); font-weight:600;
+    font-size:clamp(72px, 14vw, 140px); line-height:.88;
+    letter-spacing:-.04em;
   }
   .hero-copy .tag{
-    margin:22px 0 8px; font-size:clamp(22px, 3.2vw, 34px);
-    line-height:1.25; max-width:18ch;
+    margin:22px 0 10px; font-family:var(--display); font-weight:500;
+    font-size:clamp(26px, 3.4vw, 36px); line-height:1.25; max-width:14ch;
   }
-  .hero-copy .sub{margin:0 0 28px; color:var(--muted); font-size:18px}
-  .cta-row{display:flex; flex-wrap:wrap; gap:12px}
+  .hero-copy .sub{margin:0 0 28px; color:var(--muted); max-width:28ch}
+  .cta-row{display:flex; flex-wrap:wrap; gap:10px}
   .cta{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--display); font-weight:700; font-size:14px;
-    padding:12px 18px; border:1.5px solid var(--ink);
-    background:var(--ink); color:var(--bg); text-decoration:none;
+    display:inline-block; padding:11px 16px; text-decoration:none;
+    background:var(--ink); color:var(--paper); font-size:14px;
   }
-  .cta.ghost{background:transparent; color:var(--ink)}
+  .cta.ghost{background:transparent; color:var(--ink); border:1px solid var(--ink)}
   .cta:hover{background:var(--coral); border-color:var(--coral); color:#fff}
-  .cta.ghost:hover{background:var(--ink); color:var(--bg)}
-
-  .marquee{
-    overflow:hidden; border-block:1px solid var(--line);
-    background:rgba(255,252,246,.55);
-    padding:14px 0;
+  .hero-art{
+    position:relative; overflow:hidden; background:var(--lilac);
+    min-height:420px;
   }
-  .marquee-track{
-    display:flex; gap:42px; width:max-content;
-    animation:marquee 36s linear infinite;
-    font-family:var(--display); font-weight:700; font-size:14px;
-    letter-spacing:.04em; text-transform:uppercase; color:var(--muted);
-  }
-  .marquee-track span::before{
-    content:"✦"; color:var(--coral); margin-right:42px;
-  }
-  @keyframes marquee{
-    from{transform:translateX(0)}
-    to{transform:translateX(-50%)}
+  .hero-art img{
+    width:100%; height:100%; object-fit:cover; min-height:92vh;
   }
 
-  main{position:relative; z-index:1}
-  .wrap{width:min(1120px, calc(100% - 40px)); margin:0 auto}
-  section{padding:88px 0; border-top:1px solid var(--line)}
-  section:first-of-type{border-top:none}
-  .section-head{
-    display:flex; align-items:end; justify-content:space-between;
-    gap:24px; margin:0 0 28px;
+  .band{
+    padding:28px clamp(24px,4vw,56px);
+    background:var(--mint);
+    border-bottom:1px solid var(--line);
+    font-family:var(--display); font-size:clamp(22px, 3vw, 30px);
+    line-height:1.35; max-width:28ch;
   }
+
+  main section{border-bottom:1px solid var(--line)}
+  .wrap{width:min(860px, calc(100% - 48px)); margin:0 auto; padding:72px 0}
+  .wide{width:min(1080px, calc(100% - 48px)); margin:0 auto; padding:72px 0}
+
   h2{
-    margin:0; font-family:var(--display); font-weight:800;
-    font-size:clamp(34px, 5vw, 56px); letter-spacing:-.04em; line-height:.95;
+    margin:0 0 14px; font-family:var(--display); font-weight:600;
+    font-size:clamp(36px, 5vw, 52px); letter-spacing:-.03em; line-height:1;
   }
-  .lede{margin:0; max-width:36ch; color:var(--muted); font-size:16px}
+  .lede{margin:0 0 28px; color:var(--muted); max-width:40ch; font-size:17px}
 
-  .js [data-reveal]{
-    opacity:0; transform:translateY(28px);
-    transition:opacity .9s var(--ease), transform .9s var(--ease);
+  .paint-strip{
+    display:grid; grid-template-columns:1.2fr .8fr; gap:18px; margin-top:8px;
   }
-  .js [data-reveal].in{opacity:1; transform:none}
-  .js [data-reveal="left"]{transform:translateX(-28px)}
-  .js [data-reveal="left"].in{transform:none}
-  .js [data-reveal="scale"]{transform:scale(.96)}
-  .js [data-reveal="scale"].in{transform:none}
+  .paint-strip figure{
+    margin:0; background:var(--sand); overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .paint-strip img{width:100%; height:100%; object-fit:cover; aspect-ratio:16/10}
+  .paint-strip .tall img{aspect-ratio:1/1}
+  .paint-strip figcaption{
+    padding:10px 12px; font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted); background:var(--paper);
+    border-top:1px solid var(--line);
+  }
 
+  #atlas{background:var(--blush)}
   #atlas-map{
-    height:min(62vh, 560px); width:100%;
-    border:1px solid var(--line); background:var(--bg-deep);
+    height:min(58vh, 520px); width:100%;
+    border:1px solid var(--line); background:rgba(255,255,255,.45);
     overflow:hidden;
   }
   .map-legend{
     display:flex; gap:18px; margin:12px 0 0;
-    font-size:13px; color:var(--muted); font-family:var(--display);
+    font-size:13px; color:var(--muted);
   }
-  .map-legend i{font-style:normal}
   .map-fallback{
-    height:100%; display:grid; place-items:center; text-align:center; padding:28px;
+    height:100%; display:grid; place-items:center; text-align:center; padding:24px;
   }
-  .leaflet-container{font:14px var(--serif); background:var(--bg-deep)}
+  .leaflet-container{font:14px var(--serif); background:#f3efe6}
   .leaflet-popup-content-wrapper,.leaflet-popup-tip{
-    background:var(--panel); color:var(--ink); box-shadow:0 8px 24px rgba(26,26,23,.12);
+    background:var(--paper); color:var(--ink); box-shadow:none;
   }
-  .leaflet-popup-content-wrapper{border:1px solid var(--line); border-radius:2px}
+  .leaflet-popup-content-wrapper{border:1px solid var(--line); border-radius:0}
   .leaflet-popup-content{margin:12px 14px; line-height:1.5}
-  .pop h3{margin:0 0 4px; font-family:var(--display); font-size:14px}
+  .pop h3{margin:0 0 4px; font-family:var(--display); font-size:15px}
   .pop .g{color:var(--muted); font-size:12px; margin:0}
   .leaflet-control-layers{
-    background:var(--panel); border:1px solid var(--line); border-radius:2px;
+    background:var(--paper); border:1px solid var(--line); border-radius:0;
     box-shadow:none; font:13px var(--serif);
   }
-  .leaflet-bar a{background:var(--panel); color:var(--ink); border-bottom:1px solid var(--line)}
+  .leaflet-bar a{background:var(--paper); color:var(--ink); border-bottom:1px solid var(--line)}
 
+  #projects{background:var(--paper)}
   .catlabel{
-    font-family:var(--display); font-size:12px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--teal); margin:28px 0 10px;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--moss); margin:26px 0 8px;
   }
   .proj-list{list-style:none; margin:0; padding:0}
-  .proj-list li{
-    padding:18px 0; border-bottom:1px solid var(--line);
-  }
+  .proj-list li{padding:18px 0; border-bottom:1px solid var(--line)}
   .proj-list .row{
     display:flex; justify-content:space-between; gap:16px; align-items:baseline;
-    font-family:var(--display); font-weight:700; font-size:22px; letter-spacing:-.02em;
+    font-family:var(--display); font-size:26px; font-weight:500;
   }
   .proj-list .row a{text-decoration:none}
-  .proj-list .row a:hover{color:var(--coral)}
-  .proj-list .meta{font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap}
-  .blurb{margin:8px 0 0; color:var(--muted); font-size:15.5px; max-width:62ch}
+  .proj-list .meta{font-size:13px; color:var(--muted); font-family:var(--serif); white-space:nowrap}
+  .blurb{margin:8px 0 0; color:var(--muted); font-size:16px; max-width:58ch}
   .proj-list .ig{margin-left:auto; opacity:.55}
   .proj-list .ig:hover{opacity:1; color:var(--coral)}
-  .proj-list .ig svg{width:18px; height:18px}
+  .proj-list .ig svg{width:17px; height:17px}
 
-  .collage-stage{
-    display:grid; grid-template-columns:minmax(220px, .9fr) 1.2fr;
-    gap:28px; align-items:start;
+  #fieldnotes{background:var(--lilac)}
+  .field-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;
   }
-  .sticky-copy{position:sticky; top:96px}
-  .sticky-copy p{color:var(--muted); font-size:17px}
-  .frame-stack{display:grid; gap:18vh; padding:8vh 0 20vh}
-  .frame{
-    opacity:.35; transform:scale(.98);
-    transition:opacity .6s var(--ease), transform .6s var(--ease);
-  }
-  .frame.is-active{opacity:1; transform:none}
-  .frame figure{
-    margin:0; position:relative; overflow:hidden;
-    border:1px solid var(--line); background:var(--panel);
-    aspect-ratio: 5 / 4;
-  }
-  .frame img{width:100%; height:100%; object-fit:cover}
-  .frame figcaption{
-    position:absolute; left:14px; bottom:14px;
-    font-family:var(--display); font-size:12px; letter-spacing:.14em;
-    text-transform:uppercase; padding:8px 10px;
-    background:rgba(243,239,230,.88); color:var(--ink);
+  .field-grid p{color:var(--muted); font-size:18px; max-width:34ch}
+  .field-grid h3{
+    margin:0 0 12px; font-family:var(--display); font-weight:500;
+    font-size:30px; letter-spacing:-.02em;
   }
 
-  details.fold{margin:18px 0 0; border-top:1px solid var(--line); padding-top:18px}
+  #thoughts{background:var(--sand)}
+  details.fold{margin:10px 0 0; border-top:1px solid var(--line); padding-top:16px}
   details.fold > summary{
     list-style:none; cursor:pointer;
-    font-family:var(--display); font-weight:700; font-size:28px;
-    letter-spacing:-.03em; display:flex; align-items:center; gap:12px;
+    font-family:var(--display); font-size:28px; font-weight:500;
+    display:flex; align-items:center; gap:12px;
   }
   details.fold > summary::-webkit-details-marker{display:none}
-  details.fold > summary::after{
-    content:"+"; margin-left:auto; color:var(--coral); font-weight:500;
-  }
+  details.fold > summary::after{content:"+"; margin-left:auto; color:var(--coral)}
   details.fold[open] > summary::after{content:"\2013"}
-  details.fold[open] > summary{margin-bottom:14px}
-  .fold-body{max-width:66ch}
-
+  details.fold[open] > summary{margin-bottom:12px}
+  .fold-body{max-width:64ch}
   .questions{
-    background:color-mix(in srgb, var(--chartreuse) 28%, var(--panel));
-    border-left:4px solid var(--teal);
-    padding:22px 26px; margin-top:8px;
+    background:rgba(255,253,248,.7);
+    border-left:3px solid var(--moss);
+    padding:20px 24px; margin-top:8px;
   }
   .questions ol{margin:0; padding-left:1.15em}
   .questions li{margin:0 0 12px; font-size:19px; line-height:1.4}
   .questions li:last-child{margin-bottom:0}
   .questions li::marker{color:var(--coral)}
 
-  .love-grid{display:grid; gap:8px}
+  #love{background:var(--paper)}
   .love-grid .catlabel{margin-top:22px}
   .bullets{margin:0 0 14px; padding-left:1.15em}
   .bullets li{margin:5px 0}
-  .bullets li::marker{color:var(--marigold)}
-  .lead{font-size:22px; line-height:1.45}
+  .bullets li::marker{color:var(--coral)}
+  .lead{font-size:22px; line-height:1.45; font-family:var(--display)}
 
+  #tools{background:var(--mint)}
   .tool{
     display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between;
-    gap:24px; padding:28px; background:var(--panel); border:1px solid var(--line);
+    gap:24px; padding:8px 0;
   }
-  .tool h3{margin:0 0 8px; font-family:var(--display); font-size:28px; letter-spacing:-.03em}
+  .tool h3{margin:0 0 8px; font-family:var(--display); font-size:30px; font-weight:500}
   .tool p{margin:0; color:var(--muted); max-width:48ch}
 
   footer{
-    padding:40px 0 72px; border-top:1px solid var(--line);
-    color:var(--muted); font-size:13px;
+    padding:36px 0 64px; color:var(--muted); font-size:13px;
     display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
   }
 
   #content-status{
-    margin:24px auto; width:min(1120px, calc(100% - 40px));
-    padding:14px 16px; background:#fff3; border:1px solid var(--coral); color:var(--ink);
+    margin:20px auto; width:min(860px, calc(100% - 48px));
+    padding:12px 14px; border:1px solid var(--coral); background:var(--blush);
   }
 
-  @media (max-width:900px){
-    .topnav{padding:12px 16px}
+  .js [data-reveal]{
+    opacity:0; transform:translateY(16px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .js [data-reveal].in{opacity:1; transform:none}
+
+  @media (max-width:860px){
+    .topbar{padding:14px 16px}
     .nav{display:none}
-    .hero{padding:108px 16px 56px}
-    .hero-collage{
-      grid-template-columns:1fr 1fr; grid-template-rows:repeat(3, minmax(120px, 18vh));
-      gap:8px; padding:64px 10px 10px;
-    }
-    .hero-collage .a{grid-area:1 / 1 / 2 / 2}
-    .hero-collage .b{grid-area:1 / 2 / 2 / 3}
-    .hero-collage .c{grid-area:2 / 1 / 3 / 2}
-    .hero-collage .d{grid-area:2 / 2 / 3 / 3}
-    .hero-collage .e{grid-area:3 / 1 / 4 / 2}
-    .hero-collage .f{grid-area:3 / 2 / 4 / 3}
-    .collage-stage{grid-template-columns:1fr}
-    .sticky-copy{position:static}
-    .frame-stack{gap:8vh; padding:2vh 0 8vh}
-    section{padding:64px 0}
-    .wrap{width:min(1120px, calc(100% - 28px))}
+    .hero{grid-template-columns:1fr}
+    .hero-art img{min-height:48vh}
+    .paint-strip,.field-grid{grid-template-columns:1fr}
+    .wrap,.wide{width:min(860px, calc(100% - 32px)); padding:56px 0}
   }
 
   @media (prefers-reduced-motion:reduce){
-    .marquee-track{animation:none}
     .js [data-reveal]{opacity:1; transform:none; transition:none}
-    .hero-collage{transform:none !important}
   }
 </style>
 </head>
 <body>
-  <header class="topnav">
+  <header class="topbar">
     <a class="mark" href="#top">Anna</a>
     <nav class="nav" aria-label="Primary">
       <a href="#atlas">Atlas</a>
       <a href="#projects">Projects</a>
-      <a href="#fieldnotes">Field notes</a>
+      <a href="#fieldnotes">Notes</a>
       <a href="#thoughts">Thoughts</a>
       <a href="#love">Love</a>
       <a href="#tools">Tools</a>
@@ -343,99 +269,64 @@
   </header>
 
   <section class="hero" id="top">
-    <div class="hero-collage" aria-hidden="true">
-      <figure class="a"><img src="assets/collage/climb-1.jpg" alt=""></figure>
-      <figure class="b"><img src="assets/collage/flower-1.jpg" alt=""></figure>
-      <figure class="c"><img src="assets/collage/rock-1.jpg" alt=""></figure>
-      <figure class="d"><img src="assets/collage/hold-1.jpg" alt=""></figure>
-      <figure class="e"><img src="assets/collage/travel-1.jpg" alt=""></figure>
-      <figure class="f"><img src="assets/collage/city-1.jpg" alt=""></figure>
-    </div>
     <div class="hero-copy" data-reveal>
       <p class="eyebrow">Personal atlas</p>
       <h1 id="brand-name">Anna</h1>
       <p class="tag" id="brand-tag">Rainbows, rocks, flowers.</p>
       <p class="sub" id="brand-sub">Musings, time, and randomness.</p>
       <div class="cta-row">
-        <a class="cta" href="#projects">See projects</a>
-        <a class="cta ghost" href="#thoughts">Read writing</a>
+        <a class="cta" href="#projects">Projects</a>
+        <a class="cta ghost" href="#thoughts">Writing</a>
       </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img src="assets/paintings/hero-gouache.jpg" alt="">
     </div>
   </section>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Climbing</span><span>Stoneflower</span><span>Stablecoins</span><span>Travel</span>
-      <span>Design</span><span>Perena</span><span>Bouldering</span><span>NYC</span>
-      <span>Climbing</span><span>Stoneflower</span><span>Stablecoins</span><span>Travel</span>
-      <span>Design</span><span>Perena</span><span>Bouldering</span><span>NYC</span>
-    </div>
-  </div>
+  <p class="band">Walls are meant to be climbed. Money should feel as free as information. Everyday objects deserve the same care as works of art.</p>
 
   <p id="content-status" hidden></p>
 
   <main>
     <section id="atlas">
-      <div class="wrap" data-reveal>
-        <div class="section-head">
-          <h2>Atlas</h2>
-          <p class="lede">Crags I’ve climbed and countries I’ve wandered. Pan, zoom, click a pin.</p>
-        </div>
+      <div class="wide" data-reveal>
+        <h2>Atlas</h2>
+        <p class="lede">Crags I’ve climbed and countries I’ve wandered. Pan, zoom, click a pin.</p>
         <div id="atlas-map" role="region" aria-label="Interactive map of climbing and travel"></div>
         <p class="map-legend">
-          <i><span style="color:var(--coral)">●</span> climbing</i>
-          <i><span style="color:var(--teal)">●</span> travel</i>
+          <span><span style="color:var(--coral)">●</span> climbing</span>
+          <span><span style="color:var(--moss)">●</span> travel</span>
         </p>
       </div>
     </section>
 
     <section id="projects">
       <div class="wrap" data-reveal>
-        <div class="section-head">
-          <h2>Projects</h2>
-          <p class="lede">Perena for money infrastructure. Stoneflower for holds and design.</p>
-        </div>
+        <h2>Projects</h2>
+        <p class="lede">Perena for money infrastructure. Stoneflower for holds and design.</p>
         <div id="projects-list"></div>
       </div>
     </section>
 
     <section id="fieldnotes">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <h2>Field notes</h2>
-          <p class="lede">A scroll collage — rocks, flowers, cities, and the through-line between them.</p>
-        </div>
-        <div class="collage-stage">
-          <div class="sticky-copy" data-reveal="left">
-            <h3 style="font-family:var(--display);font-size:28px;letter-spacing:-.03em;margin:0 0 12px">Color maximalist. Movement obsessed.</h3>
+      <div class="wide" data-reveal>
+        <div class="field-grid">
+          <div>
+            <h2>Field notes</h2>
+            <h3>Color maximalist. Movement obsessed.</h3>
             <p>I’m a boulderer who builds money rails by day and climbing objects by night. The through-line is craft: beautiful things that also work hard.</p>
-            <p>Stoneflower is the current side quest that’s becoming a real quest — fine holds, good design, community that shows up at the wall.</p>
+            <p>Stoneflower is the side quest becoming a real quest — fine holds, good design, community at the wall.</p>
           </div>
-          <div class="frame-stack">
-            <div class="frame is-active" data-sticky-frame data-reveal="scale">
-              <figure>
-                <img src="assets/collage/rock-1.jpg" alt="Rock texture and climbing landscape">
-                <figcaption>Rocks</figcaption>
-              </figure>
-            </div>
-            <div class="frame" data-sticky-frame data-reveal="scale">
-              <figure>
-                <img src="assets/collage/bloom-1.jpg" alt="Flowers">
-                <figcaption>Flowers</figcaption>
-              </figure>
-            </div>
-            <div class="frame" data-sticky-frame data-reveal="scale">
-              <figure>
-                <img src="assets/collage/hold-1.jpg" alt="Climbing holds and gear mood">
-                <figcaption>Holds</figcaption>
-              </figure>
-            </div>
-            <div class="frame" data-sticky-frame data-reveal="scale">
-              <figure>
-                <img src="assets/collage/stone-1.jpg" alt="Interior and stone materials">
-                <figcaption>Material</figcaption>
-              </figure>
-            </div>
+          <div class="paint-strip" style="grid-template-columns:1fr; gap:14px">
+            <figure class="tall">
+              <img src="assets/paintings/holds-gouache.jpg" alt="Painted climbing holds">
+              <figcaption>Holds</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/paintings/flowers-gouache.jpg" alt="Painted wildflowers">
+              <figcaption>Flowers</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -443,10 +334,7 @@
 
     <section id="thoughts">
       <div class="wrap" data-reveal>
-        <div class="section-head">
-          <h2>Thoughts</h2>
-          <p class="lede">Writing updates from <code>content/site.json</code> — add a piece, push, done.</p>
-        </div>
+        <h2>Thoughts</h2>
 
         <details class="fold" id="defaults">
           <summary>Alternate Defaults</summary>
@@ -462,7 +350,7 @@
           <summary>Writing</summary>
           <div class="fold-body">
             <div id="writing-list"></div>
-            <p class="blurb" style="margin-top:22px">More on my <a href="https://x.com/gizmothegizzer/articles">X articles</a>. How to keep this list current: see <a href="CONTENT.md">CONTENT.md</a>.</p>
+            <p class="blurb" style="margin-top:22px">More on my <a href="https://x.com/gizmothegizzer/articles">X articles</a>.</p>
           </div>
         </details>
       </div>
@@ -470,10 +358,8 @@
 
     <section id="love">
       <div class="wrap" data-reveal>
-        <div class="section-head">
-          <h2>Love</h2>
-          <p class="lede">An earnest job description for a serious relationship.</p>
-        </div>
+        <h2>Love</h2>
+        <p class="lede">An earnest job description for a serious relationship.</p>
         <details class="fold" id="date">
           <summary>A JD for My Future Partner(s)</summary>
           <div class="fold-body love-grid">
@@ -530,10 +416,7 @@
 
     <section id="tools">
       <div class="wrap" data-reveal>
-        <div class="section-head">
-          <h2>Tools</h2>
-          <p class="lede">Things I’ve built for other builders.</p>
-        </div>
+        <h2>Tools</h2>
         <div class="tool">
           <div>
             <h3>The Founder's Schema</h3>
@@ -546,7 +429,7 @@
 
     <div class="wrap">
       <footer>
-        <p>© 2026 Anna. Photos via Unsplash.</p>
+        <p>© 2026 Anna.</p>
         <p id="updated"></p>
       </footer>
     </div>
