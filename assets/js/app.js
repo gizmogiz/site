@@ -56,13 +56,20 @@
               IG_SVG +
               "</a>"
             : "";
+          const img = p.image
+            ? '<figure class="proj-media"><img src="' +
+              esc(p.image) +
+              '" alt="" loading="lazy"></figure>'
+            : "";
           return (
-            "<li><div class=\"row\">" +
+            "<li class=\"proj-item\">" +
+            img +
+            '<div class="proj-copy"><div class="row">' +
             name +
             ig +
             '</div><p class="blurb">' +
             esc(p.blurb) +
-            "</p></li>"
+            "</p></div></li>"
           );
         })
         .join("") +

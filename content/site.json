@@ -16,12 +16,14 @@
       "name": "Perena",
       "href": "https://perena.org",
       "instagram": "https://www.instagram.com/perena_org/",
+      "image": "assets/paintings/perena-gouache.jpg",
       "blurb": "You know stocks and T-bills. Turns out there's a whole menu — private credit, real-world assets, market-neutral strategies — that regular people just never get offered. Perena hands you the menu."
     },
     {
       "name": "Stoneflower Climbing",
       "href": "https://www.instagram.com/stone_flr/",
       "instagram": "https://www.instagram.com/stone_flr/",
+      "image": "assets/photos/stoneflower-garden.png",
       "blurb": "Purveyor of fine holds and good design for climbers. Going quite well."
     }
   ],

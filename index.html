@@ -168,7 +168,16 @@
     color:var(--plum); margin:26px 0 8px;
   }
   .proj-list{list-style:none; margin:0; padding:0}
-  .proj-list li{padding:18px 0; border-bottom:1px solid var(--line)}
+  .proj-list > li:not(.proj-item){padding:18px 0; border-bottom:1px solid var(--line)}
+  #projects-list .proj-list{display:grid; gap:28px}
+  .proj-item{
+    display:grid; grid-template-columns:minmax(160px,.72fr) 1.28fr;
+    gap:22px; align-items:center; padding:8px 0 22px;
+    border-bottom:1px solid var(--line);
+  }
+  .proj-item:last-child{border-bottom:none; padding-bottom:0}
+  .proj-media{margin:0; overflow:hidden; border:1px solid var(--line); background:var(--sand)}
+  .proj-media img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block}
   .proj-list .row{
     display:flex; justify-content:space-between; gap:16px; align-items:baseline;
     font-family:var(--display); font-size:26px; font-weight:500;
@@ -179,6 +188,10 @@
   .proj-list .ig{margin-left:auto; opacity:.55}
   .proj-list .ig:hover{opacity:1; color:var(--coral)}
   .proj-list .ig svg{width:17px; height:17px}
+  @media (max-width:700px){
+    .proj-item{grid-template-columns:1fr}
+    .proj-media img{aspect-ratio:16/10}
+  }
 
   #fieldnotes{background:var(--lilac)}
   .field-grid{
@@ -265,7 +278,6 @@
     <nav class="nav" aria-label="Primary">
       <a href="#atlas">Atlas</a>
       <a href="#projects">Projects</a>
-      <a href="#fieldnotes">Notes</a>
       <a href="#thoughts">Thoughts</a>
       <a href="#love">Love</a>
       <a href="#tools">Tools</a>
@@ -297,7 +309,7 @@
     <section id="atlas">
       <div class="wide" data-reveal>
         <h2>Atlas</h2>
-        <p class="lede">Crags I’ve climbed and countries I’ve wandered. Pan, zoom, click a pin.</p>
+        <p class="lede">Crags I’ve climbed and countries I’ve wandered.</p>
         <div id="atlas-map" role="region" aria-label="Interactive map of climbing and travel"></div>
         <p class="map-legend">
           <span><span style="color:var(--coral)">●</span> climbing</span>
@@ -307,35 +319,15 @@
     </section>
 
     <section id="projects">
-      <div class="wrap" data-reveal>
+      <div class="wide" data-reveal>
         <h2>Projects</h2>
-        <p class="lede">Perena for money infrastructure. Stoneflower for holds and design.</p>
         <div id="projects-list"></div>
       </div>
     </section>
 
-    <section id="fieldnotes">
-      <div class="wide" data-reveal>
-        <div class="field-grid">
-          <div>
-            <h2>Field notes</h2>
-            <h3>Color maximalist. Movement obsessed.</h3>
-            <p>I’m a boulderer who builds money rails by day and climbing objects by night. The through-line is craft: beautiful things that also work hard.</p>
-            <p>Stoneflower is the side quest becoming a real quest — fine holds, good design, community at the wall.</p>
-          </div>
-          <div class="paint-strip" style="grid-template-columns:1fr; gap:14px">
-            <figure class="tall">
-              <img src="assets/photos/stoneflower-garden.png" alt="Stoneflower garden mood">
-              <figcaption>Stoneflower</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/paintings/flowers-gouache.jpg" alt="Painted wildflowers">
-              <figcaption>Flowers</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Field notes hidden for now
+    <section id="fieldnotes">...</section>
+    -->
 
     <section id="thoughts">
       <div class="wrap" data-reveal>
