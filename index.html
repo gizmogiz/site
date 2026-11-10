@@ -11,16 +11,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FFFDF8;
-    --blush:#FFD6E4;
-    --mint:#D7F0D4;
-    --lilac:#D9D0F0;
-    --sand:#F3E6CF;
-    --ink:#161513;
-    --muted:#5E5952;
-    --coral:#D96B4C;
-    --moss:#6A8F7A;
-    --line:rgba(22,21,19,.14);
+    /* Stoneflower mauve — dusty shirt purple + deeper plum accents */
+    --paper:#F4EEF2;
+    --blush:#D9B4C4;
+    --mint:#C7D2C4;
+    --lilac:#B59BB0;
+    --sand:#E2D0D6;
+    --plum:#5A3A52;
+    --ink:#2A1F28;
+    --muted:#6E5F68;
+    --coral:#B86B7A;
+    --moss:#4F6A52;
+    --line:rgba(42,31,40,.16);
     --display:"Bodoni Moda", "Times New Roman", serif;
     --serif:"Literata", Georgia, serif;
     --cjk:"Noto Serif SC", "Literata", serif;
@@ -72,7 +74,7 @@
   }
   .eyebrow{
     margin:0 0 22px; font-size:12px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--moss);
+    text-transform:uppercase; color:var(--plum);
   }
   .hero-copy h1{
     margin:0; font-family:var(--display); font-weight:600;
@@ -87,9 +89,9 @@
   .cta-row{display:flex; flex-wrap:wrap; gap:10px}
   .cta{
     display:inline-block; padding:11px 16px; text-decoration:none;
-    background:var(--ink); color:var(--paper); font-size:14px;
+    background:var(--plum); color:var(--paper); font-size:14px;
   }
-  .cta.ghost{background:transparent; color:var(--ink); border:1px solid var(--ink)}
+  .cta.ghost{background:transparent; color:var(--plum); border:1px solid var(--plum)}
   .cta:hover{background:var(--coral); border-color:var(--coral); color:#fff}
   .hero-art{
     position:relative; overflow:hidden; background:var(--lilac);
@@ -101,10 +103,11 @@
 
   .band{
     padding:28px clamp(24px,4vw,56px);
-    background:var(--mint);
+    background:var(--plum);
+    color:#F4EEF2;
     border-bottom:1px solid var(--line);
     font-family:var(--display); font-size:clamp(22px, 3vw, 30px);
-    line-height:1.35; max-width:28ch;
+    line-height:1.35; max-width:32ch;
   }
 
   main section{border-bottom:1px solid var(--line)}
@@ -162,7 +165,7 @@
   #projects{background:var(--paper)}
   .catlabel{
     font-size:12px; letter-spacing:.16em; text-transform:uppercase;
-    color:var(--moss); margin:26px 0 8px;
+    color:var(--plum); margin:26px 0 8px;
   }
   .proj-list{list-style:none; margin:0; padding:0}
   .proj-list li{padding:18px 0; border-bottom:1px solid var(--line)}
@@ -216,13 +219,15 @@
   .bullets li::marker{color:var(--coral)}
   .lead{font-size:22px; line-height:1.45; font-family:var(--display)}
 
-  #tools{background:var(--mint)}
+  #tools{background:var(--lilac)}
   .tool{
     display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between;
     gap:24px; padding:8px 0;
   }
   .tool h3{margin:0 0 8px; font-family:var(--display); font-size:30px; font-weight:500}
   .tool p{margin:0; color:var(--muted); max-width:48ch}
+  #tools .cta{background:var(--plum); color:#F4EEF2}
+  #tools .cta:hover{background:var(--ink)}
 
   footer{
     padding:36px 0 64px; color:var(--muted); font-size:13px;
@@ -296,7 +301,7 @@
         <div id="atlas-map" role="region" aria-label="Interactive map of climbing and travel"></div>
         <p class="map-legend">
           <span><span style="color:var(--coral)">●</span> climbing</span>
-          <span><span style="color:var(--moss)">●</span> travel</span>
+          <span><span style="color:var(--plum)">●</span> travel</span>
         </p>
       </div>
     </section>
@@ -320,8 +325,8 @@
           </div>
           <div class="paint-strip" style="grid-template-columns:1fr; gap:14px">
             <figure class="tall">
-              <img src="assets/paintings/holds-gouache.jpg" alt="Painted climbing holds">
-              <figcaption>Holds</figcaption>
+              <img src="assets/photos/stoneflower-garden.png" alt="Stoneflower garden mood">
+              <figcaption>Stoneflower</figcaption>
             </figure>
             <figure>
               <img src="assets/paintings/flowers-gouache.jpg" alt="Painted wildflowers">

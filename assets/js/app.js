@@ -167,8 +167,8 @@
       maxZoom: 19,
     }).addTo(map);
 
-    const climbingLayer = makeLayer(data.climbing || [], "#D96B4C").addTo(map);
-    const travelLayer = makeLayer(data.travel || [], "#6A8F7A").addTo(map);
+    const climbingLayer = makeLayer(data.climbing || [], "#B86B7A").addTo(map);
+    const travelLayer = makeLayer(data.travel || [], "#5A3A52").addTo(map);
     L.control
       .layers(
         null,
