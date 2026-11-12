@@ -28,6 +28,7 @@ Omit `"lang"` for English. Use `"lang": "zh"` for Chinese pieces.
 Same file:
 
 - `projects` — ventures (array)
+- `love` — posts under Love (title, href, date, blurb)
 - `climbing` / `travel` — atlas pins (`name`, `lat`, `lng`, optional `sub` / `note`)
 - `defaults` — Alternate Defaults lines
 - `social` — footer / nav links

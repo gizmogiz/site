@@ -3,8 +3,16 @@
     "name": "Anna",
     "tagline": "Rainbows, rocks, flowers.",
     "subline": "Musings, time, and randomness.",
-    "updated": "2026-11-10"
+    "updated": "2026-11-12"
   },
+  "love": [
+    {
+      "title": "10 Kids, 10 Men",
+      "href": "https://www.instagram.com/p/DexG_hJn0Wj/",
+      "date": "Oct 2025",
+      "blurb": "A thought experiment on reimagining family — pooled resources, many mentors, and more siblings than an isolated nuclear household."
+    }
+  ],
   "social": [
     { "label": "x", "href": "https://x.com/gizmothegizzer" },
     { "label": "instagram", "href": "https://instagram.com/gizmothegizzer", "icon": "ig" },

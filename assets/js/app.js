@@ -122,6 +122,33 @@
       .join("");
   }
 
+  function renderLove(posts) {
+    const root = document.getElementById("love-list");
+    if (!root) return;
+    if (!posts || !posts.length) {
+      root.innerHTML = "";
+      return;
+    }
+    root.innerHTML =
+      '<ul class="proj-list">' +
+      posts
+        .map(function (item) {
+          return (
+            "<li><div class=\"row\"><a href=\"" +
+            esc(item.href) +
+            '">' +
+            esc(item.title) +
+            '</a><span class="meta">' +
+            esc(item.date) +
+            "</span></div><p class=\"blurb\">" +
+            esc(item.blurb) +
+            "</p></li>"
+          );
+        })
+        .join("") +
+      "</ul>";
+  }
+
   function popupHTML(s) {
     let h = '<div class="pop"><h3>' + esc(s.name) + "</h3>";
     if (s.sub) h += '<p class="g">' + esc(s.sub) + "</p>";
@@ -281,6 +308,7 @@
     renderProjects(data.projects);
     renderWriting(data.writing);
     renderDefaults(data.defaults);
+    renderLove(data.love);
     initMap(data);
     initMotion();
     wireChrome();
