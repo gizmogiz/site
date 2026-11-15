@@ -171,7 +171,8 @@
     { "name": "Joshua Tree", "lat": 33.88, "lng": -115.9, "sub": "California, USA" },
     { "name": "Yosemite", "lat": 37.845, "lng": -119.533, "sub": "California, USA" },
     { "name": "Fontainebleau", "lat": 48.405, "lng": 2.55, "sub": "France" },
-    { "name": "Near Prague", "lat": 49.95, "lng": 14.3, "sub": "Czechia" }
+    { "name": "Near Prague", "lat": 49.95, "lng": 14.3, "sub": "Czechia" },
+    { "name": "Squamish", "lat": 49.7016, "lng": -123.1558, "sub": "British Columbia, Canada" }
   ],
   "travel": [
     { "name": "Cambodia", "lat": 11.56, "lng": 104.92 },
@@ -222,7 +223,9 @@
     { "name": "North Macedonia", "lat": 42.0, "lng": 21.43 },
     { "name": "United Kingdom", "lat": 51.51, "lng": -0.13 },
     { "name": "Vatican City", "lat": 41.9, "lng": 12.45 },
-    { "name": "Canada", "lat": 43.65, "lng": -79.38 },
+    { "name": "Vancouver", "lat": 49.2827, "lng": -123.1207, "note": "Lived." },
+    { "name": "Toronto", "lat": 43.6532, "lng": -79.3832, "note": "Lived." },
+    { "name": "Canada", "lat": 45.42, "lng": -75.7 },
     { "name": "Costa Rica", "lat": 9.93, "lng": -84.08 },
     { "name": "Cuba", "lat": 23.11, "lng": -82.37 },
     { "name": "Dominican Republic", "lat": 18.49, "lng": -69.93 },
