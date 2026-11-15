@@ -267,12 +267,91 @@
     .wrap,.wide{width:min(860px, calc(100% - 32px)); padding:56px 0}
   }
 
+  /* Background collage — soft scraps that drift with scroll (not Baglioni chrome) */
+  .collage-field{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    overflow:hidden;
+  }
+  .scrap{
+    position:absolute; width:min(168px, 18vw); aspect-ratio:1;
+    object-fit:cover; border:1px solid var(--line);
+    opacity:.28; filter:saturate(.85) contrast(.95);
+    box-shadow:0 10px 28px rgba(42,31,40,.08);
+    will-change:transform;
+  }
+  .scrap-a{top:18%; left:2%; transform:rotate(-8deg)}
+  .scrap-b{top:42%; right:2.5%; width:min(140px, 15vw); transform:rotate(6deg); opacity:.22}
+  .scrap-c{top:68%; left:3%; width:min(120px, 13vw); transform:rotate(11deg); opacity:.2}
+  .scrap-d{top:84%; right:4%; width:min(132px, 14vw); transform:rotate(-5deg); opacity:.18}
+
+  .collage-bridge{
+    position:relative; z-index:1;
+    display:flex; justify-content:center; gap:14px;
+    padding:10px clamp(16px, 4vw, 40px) 0;
+    margin-top:-6px;
+    pointer-events:none;
+  }
+  .collage-bridge .shard{
+    width:min(160px, 28vw); aspect-ratio:5/4; object-fit:cover;
+    border:1px solid var(--line); opacity:.55;
+    transform:rotate(-3deg);
+    box-shadow:0 8px 20px rgba(42,31,40,.1);
+  }
+  .collage-bridge .shard:nth-child(2){transform:rotate(4deg) translateY(10px); opacity:.48}
+  .collage-bridge .shard:nth-child(3){transform:rotate(-6deg) translateY(4px); opacity:.4}
+
+  .egg{
+    position:absolute; z-index:5; padding:0; margin:0;
+    border:1px solid var(--line); background:var(--paper);
+    cursor:pointer; width:72px; aspect-ratio:1; overflow:hidden;
+    opacity:.42; transition:opacity .35s var(--ease), transform .35s var(--ease);
+  }
+  .egg img{width:100%; height:100%; object-fit:cover; display:block}
+  .egg:hover, .egg:focus-visible{
+    opacity:.95; outline:2px solid var(--coral); outline-offset:3px;
+  }
+  .egg-hold{top:0; right:clamp(12px, 4vw, 48px); transform:rotate(7deg)}
+  .egg-bloom{bottom:12px; left:clamp(12px, 3vw, 40px); transform:rotate(-9deg)}
+  #projects{position:relative}
+  #love{position:relative}
+
+  .egg-whisper{
+    position:fixed; left:50%; bottom:28px; z-index:40;
+    transform:translateX(-50%) translateY(12px);
+    background:var(--plum); color:#F4EEF2;
+    font-family:var(--display); font-size:15px;
+    padding:12px 18px; border:1px solid var(--line);
+    opacity:0; pointer-events:none;
+    transition:opacity .35s var(--ease), transform .35s var(--ease);
+    max-width:min(360px, calc(100% - 32px)); text-align:center;
+  }
+  .egg-whisper.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto}
+  .egg-whisper a{color:#F4EEF2; text-decoration:underline}
+
+  main, .band, .hero, .topbar, footer{position:relative; z-index:1}
+  .topbar{z-index:20}
+
+  @media (max-width:860px){
+    .scrap-b, .scrap-c, .scrap-d{display:none}
+    .scrap-a{opacity:.18; width:96px}
+    .collage-bridge .shard:nth-child(3){display:none}
+    .egg{width:56px; opacity:.5}
+  }
+
   @media (prefers-reduced-motion:reduce){
     .js [data-reveal]{opacity:1; transform:none; transition:none}
+    .scrap{will-change:auto}
   }
 </style>
 </head>
 <body>
+  <div class="collage-field" aria-hidden="true">
+    <img class="scrap scrap-a" data-parallax="0.14" src="assets/collage/flower-1.jpg" alt="">
+    <img class="scrap scrap-b" data-parallax="0.22" src="assets/collage/rock-1.jpg" alt="">
+    <img class="scrap scrap-c" data-parallax="0.1" src="assets/collage/climb-1.jpg" alt="">
+    <img class="scrap scrap-d" data-parallax="0.18" src="assets/collage/travel-1.jpg" alt="">
+  </div>
+
   <header class="topbar">
     <a class="mark" href="#top">Anna</a>
     <nav class="nav" aria-label="Primary">
@@ -303,7 +382,15 @@
 
   <p class="band">Walls are meant to be climbed. Money should feel as free as information. Everyday objects deserve the same care as works of art.</p>
 
+  <div class="collage-bridge" aria-hidden="true">
+    <img class="shard" src="assets/collage/bloom-1.jpg" alt="">
+    <img class="shard" src="assets/collage/stone-1.jpg" alt="">
+    <img class="shard" src="assets/collage/city-1.jpg" alt="">
+  </div>
+
   <p id="content-status" hidden></p>
+
+  <div class="egg-whisper" id="egg-whisper" role="status" aria-live="polite"></div>
 
   <main>
     <section id="atlas">
@@ -319,6 +406,9 @@
     </section>
 
     <section id="projects">
+      <button type="button" class="egg egg-hold" data-egg="hold" data-whisper="You found a hold." data-href="https://www.instagram.com/stone_flr/" aria-label="Hidden find: a climbing hold">
+        <img src="assets/paintings/holds-gouache.jpg" alt="">
+      </button>
       <div class="wide" data-reveal>
         <h2>Projects</h2>
         <div id="projects-list"></div>
@@ -330,6 +420,9 @@
     -->
 
     <section id="love">
+      <button type="button" class="egg egg-bloom" data-egg="bloom" data-whisper="You found a bloom." data-href="#defaults" aria-label="Hidden find: a bloom">
+        <img src="assets/collage/flower-1.jpg" alt="">
+      </button>
       <div class="wrap" data-reveal>
         <h2>Love</h2>
         <p class="lede">Family experiments, partnership, and how I want to build a life with people.</p>
