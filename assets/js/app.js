@@ -269,6 +269,69 @@
     });
   }
 
+  function initCollage() {
+    const scraps = Array.prototype.slice.call(
+      document.querySelectorAll(".scrap[data-parallax]")
+    );
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function tick() {
+      if (reduce) return;
+      const y = window.scrollY || 0;
+      scraps.forEach(function (el) {
+        const speed = parseFloat(el.getAttribute("data-parallax")) || 0.1;
+        var rotate = "-5deg";
+        if (el.classList.contains("scrap-a")) rotate = "-8deg";
+        else if (el.classList.contains("scrap-b")) rotate = "6deg";
+        else if (el.classList.contains("scrap-c")) rotate = "11deg";
+        el.style.transform =
+          "rotate(" +
+          rotate +
+          ") translate3d(0," +
+          Math.round(y * speed) +
+          "px,0)";
+      });
+    }
+
+    if (scraps.length && !reduce) {
+      tick();
+      window.addEventListener("scroll", tick, { passive: true });
+    }
+
+    const whisper = document.getElementById("egg-whisper");
+    let hideTimer = null;
+    document.querySelectorAll("[data-egg]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const text = btn.getAttribute("data-whisper") || "Found.";
+        const href = btn.getAttribute("data-href");
+        if (!whisper) return;
+        if (href && href.charAt(0) === "#") {
+          whisper.textContent = text;
+          const target = document.querySelector(href);
+          if (target) {
+            if (target.tagName === "DETAILS") target.open = true;
+            target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+          }
+        } else if (href) {
+          whisper.innerHTML =
+            esc(text) +
+            ' <a href="' +
+            esc(href) +
+            '" rel="noopener" target="_blank">Look closer →</a>';
+        } else {
+          whisper.textContent = text;
+        }
+        whisper.classList.add("show");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          whisper.classList.remove("show");
+        }, 4200);
+      });
+    });
+  }
+
   function openTarget() {
     if (!location.hash) return;
     const el = document.querySelector(location.hash);
@@ -311,6 +374,7 @@
     renderLove(data.love);
     initMap(data);
     initMotion();
+    initCollage();
     wireChrome();
   }
 
@@ -329,6 +393,7 @@
           "Could not load content. Serve this folder over HTTP (see CONTENT.md).";
       }
       initMotion();
+      initCollage();
       wireChrome();
       showMapError("Content failed to load, so the atlas could not start.");
     });
